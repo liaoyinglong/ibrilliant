@@ -18,6 +18,6 @@
     "url": "http://192.168.70.56:8088/hopex/ibrilliant.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "father build"
   }
 }
