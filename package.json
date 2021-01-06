@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "create-packages": "lerna create"
+  },
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "father": "^2.30.1",
+    "lerna": "^3.22.1",
+    "prettier": "^2.2.1"
+  },
+  "resolutions": {
+    "prettier": "^2.2.1"
   },
   "private": true,
   "workspaces": [
