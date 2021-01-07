@@ -4,10 +4,12 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "build": "father-build"
+    "prebuild": "shx rm -rf ./dist",
+    "build": "tsc -p ./tsconfig.json",
+    "start": "tsc -p ./tsconfig.json -w"
   },
-  "main": "./dist/index.esm.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
