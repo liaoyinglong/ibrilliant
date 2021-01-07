@@ -1,7 +1,7 @@
 import { useDebugValue, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import _ from "lodash";
-import { wrapperedQs } from "../shared/wrapperedQs";
+import { wrapperedQs } from "@ibrilliant/utils";
 
 const memoizedQsParse = _.memoize(wrapperedQs.parse);
 

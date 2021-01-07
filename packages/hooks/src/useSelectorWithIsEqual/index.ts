@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { isDeepEqual } from "../shared/isDeepEqual";
+import { isDeepEqual } from "@ibrilliant/utils";
 
 export const useSelectorWithIsEqual: typeof useSelector = (
   selector,
