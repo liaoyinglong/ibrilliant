@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "create-package": "lerna create",
-    "clean-workspace": "lerna clean"
+    "clean-workspace": "lerna clean",
+    "lv": "lerna version",
+    "pub": "lerna publish"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.5.0",

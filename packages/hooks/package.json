@@ -20,7 +20,11 @@
     "url": "http://192.168.70.56:8088/hopex/ibrilliant.git"
   },
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "@ibrilliant/utils": "0.1.0"
   }
 }

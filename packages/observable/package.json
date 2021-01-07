@@ -4,11 +4,11 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "build": "father-build",
-    "postbuild": "shx rm -rf ./dist/src ./dist/dist && shx cp ./dist/operators.esm.js ./dist/operators.js"
+    "build": "father-build"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -19,6 +19,9 @@
   "repository": {
     "type": "git",
     "url": "http://192.168.70.56:8088/hopex/ibrilliant.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5"
