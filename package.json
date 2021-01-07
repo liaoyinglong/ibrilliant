@@ -7,6 +7,7 @@
     "create-package": "lerna create",
     "clean-workspace": "lerna clean",
     "lv": "lerna version",
+    "prepub": "yarn workspaces run build",
     "pub": "lerna publish",
     "pub-from-git": "lerna publish from-git"
   },
