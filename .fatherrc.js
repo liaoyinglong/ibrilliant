@@ -16,6 +16,7 @@ const defaultOptions = {
     "@reduxjs/toolkit",
     "fast-deep-equal",
     "rxjs",
+    "qs",
   ],
 };
 
