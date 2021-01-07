@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "build": "father build"
+    "build": "father-build"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
