@@ -1,4 +1,5 @@
 export * from "./createSliceHook";
 export * from "./useBehaviorSubjectControl";
-export * from "./useSelectorWithIsEqual";
 export * from "./useLocationQuery";
+export * from "./useMuiTabsControl";
+export * from "./useSelectorWithIsEqual";
