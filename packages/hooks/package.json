@@ -1,23 +1,22 @@
 {
-  "name": "hooks",
+  "name": "@ibrilliant/hooks",
   "version": "0.0.0",
-  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "description": "",
   "keywords": [],
+  "scripts": {
+    "build": "father build"
+  },
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
+  "files": ["dist"],
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
-  "main": "lib/hooks.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "http://192.168.70.56:8088/hopex/ibrilliant.git"
   },
-  "scripts": {
-    "build": "father build"
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "fast-deep-equal": "^3.1.3"
   }
 }
