@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@ibrilliant/utils": "0.1.0"
+    "@ibrilliant/utils": "^0.1.0"
   }
 }
