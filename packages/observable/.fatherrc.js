@@ -2,5 +2,5 @@ const options = require("../../.fatherrc");
 
 module.exports = {
   ...options,
-  entry: ["src/index.ts", "src/operators.ts"],
+  entry: ["src/operators.ts", "src/index.ts"],
 };

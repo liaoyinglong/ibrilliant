@@ -4,7 +4,8 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "build": "father-build"
+    "build": "father-build",
+    "postbuild": "shx rm -rf ./dist/src ./dist/dist && shx cp ./dist/operators.esm.js ./dist/operators.js"
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
