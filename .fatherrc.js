@@ -12,6 +12,7 @@ const defaultOptions = {
     "lodash",
     "@reduxjs/toolkit",
     "fast-deep-equal",
+    "rxjs",
   ],
 };
 

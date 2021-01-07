@@ -1,17 +1,17 @@
-import type { Slice } from '@reduxjs/toolkit';
-import { DefaultRootState, useSelector } from 'react-redux';
-import _ from 'lodash';
-import isDeepEqual from 'fast-deep-equal/react';
+import type { Slice } from "@reduxjs/toolkit";
+import { DefaultRootState, useSelector } from "react-redux";
+import _ from "lodash";
+import { isDeepEqual } from "../shared/isDeepEqual";
 
 type HookName<T extends string> = `use${Capitalize<T>}SliceState`;
 
 export function createSliceStateHook<
   T extends Slice,
-  State extends ReturnType<T['reducer']>
+  State extends ReturnType<T["reducer"]>
 >(slice: T) {
   function useSliceStateHookInner(): State;
   function useSliceStateHookInner<K extends keyof State>(
-    keys?: K[],
+    keys?: K[]
   ): Pick<State, K>;
   function useSliceStateHookInner(keys?: any): any {
     return useSliceState(slice, keys);
@@ -20,7 +20,7 @@ export function createSliceStateHook<
   const res = {
     [`use${_.upperFirst(slice.name)}SliceState`]: useSliceStateHookInner,
   } as {
-    [key in HookName<T['name']>]: typeof useSliceStateHookInner;
+    [key in HookName<T["name"]>]: typeof useSliceStateHookInner;
   };
 
   return res;
@@ -28,11 +28,11 @@ export function createSliceStateHook<
 
 export function useSliceState<
   T extends Slice,
-  State extends ReturnType<T['reducer']>
+  State extends ReturnType<T["reducer"]>
 >(slice: T): State;
 export function useSliceState<
   T extends Slice,
-  State extends ReturnType<T['reducer']>,
+  State extends ReturnType<T["reducer"]>,
   K extends keyof State
 >(slice: T, keys?: K[]): Pick<State, K>;
 export function useSliceState(slice: any, keys?: any): any {
@@ -46,7 +46,7 @@ export function useSliceState(slice: any, keys?: any): any {
 
       return sliceState;
     },
-    keys?.length ? isDeepEqual : void 0,
+    keys?.length ? isDeepEqual : void 0
   );
 
   return selectorState;
