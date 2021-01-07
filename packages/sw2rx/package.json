@@ -22,10 +22,9 @@
     "pub": "yarn publish",
     "l": "yarn link"
   },
-  "devDependencies": {},
   "dependencies": {
     "@openapitools/openapi-generator-cli": "2.1.7",
     "axios": "^0.21.1",
-    "commander": "^6.2.0"
+    "commander": "^6.2.1"
   }
 }

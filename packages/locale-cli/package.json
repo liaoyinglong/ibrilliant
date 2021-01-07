@@ -24,7 +24,6 @@
     "pub": "yarn publish --access=public",
     "l": "yarn link"
   },
-  "peerDependencies": {},
   "prettier": {
     "printWidth": 80,
     "semi": true,
@@ -39,11 +38,11 @@
     "@types/prettier": "^2.1.5"
   },
   "dependencies": {
-    "node-xlsx": "^0.15.0",
-    "opencc": "^1.1.1",
-    "commander": "^6.2.0",
+    "commander": "^6.2.1",
     "debug": "^4.2.0",
     "inquirer": "^7.3.3",
-    "tslib": "^2.0.3"
+    "node-xlsx": "^0.15.0",
+    "opencc": "^1.1.1",
+    "tslib": "^2.1.0"
   }
 }
