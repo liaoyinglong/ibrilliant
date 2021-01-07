@@ -5,13 +5,13 @@
 /mock
 # dependencies
 node_modules
-/npm-debug.log*
-/yarn-error.log
-/package-lock.json
+npm-debug.log*
+yarn-error.log
+package-lock.json
 openapitools.json
 
 # production
-/dist
+dist
 
 # misc
 .DS_Store
@@ -22,5 +22,4 @@ openapitools.json
 /src/.umi-test
 /.env.local
 
-/public/tailwind.min.css
 
