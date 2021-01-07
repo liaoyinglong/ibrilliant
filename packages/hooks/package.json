@@ -15,10 +15,6 @@
   ],
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "http://192.168.70.56:8088/hopex/ibrilliant.git"
-  },
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
