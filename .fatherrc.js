@@ -6,9 +6,12 @@ const defaultOptions = {
   runtimeHelpers: true,
   extraExternals: [
     "react",
-    "react-dom",
-    "redux",
     "react-redux",
+    "react-dom",
+    "react-router",
+    "react-router-dom",
+    "redux",
+
     "lodash",
     "@reduxjs/toolkit",
     "fast-deep-equal",
