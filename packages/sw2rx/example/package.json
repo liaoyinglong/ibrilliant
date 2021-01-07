@@ -1,0 +1,11 @@
+{
+  "name": "test-swagger-gen-rxjs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "sw": "sw2rx",
+    "sw-skipDownLoad": "sw2rx --skipDownLoad",
+    "sw-keepTempFile": "sw2rx --keepTempFile",
+    "l": "yarn link sw2rx"
+  }
+}
