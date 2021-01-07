@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/hooks",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -8,7 +8,10 @@
   },
   "main": "./dist/index.esm.js",
   "module": "./dist/index.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
   "repository": {
