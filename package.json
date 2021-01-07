@@ -7,7 +7,8 @@
     "create-package": "lerna create",
     "clean-workspace": "lerna clean",
     "lv": "lerna version",
-    "pub": "lerna publish"
+    "pub": "lerna publish",
+    "pub-from-git": "lerna publish from-git"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.5.0",
