@@ -11,6 +11,15 @@ export function removeCannotParsedContent<T>(json: T) {
 export function normalize(str: string) {
   let res = str.replace(/`1\[\[/g, ".");
   res = res.replace(/,\s.*=.*]]/g, "");
+
+  /**
+   * application/json-patch+json
+   * 类似这种直接忽略
+   */
+  if (!str.startsWith("application")) {
+    res = res.replace(/\+/g, "");
+  }
+
   return res;
 }
 
