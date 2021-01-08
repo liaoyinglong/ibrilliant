@@ -13,10 +13,11 @@ export function normalize(str: string) {
   res = res.replace(/,\s.*=.*]]/g, "");
 
   /**
-   * application/json-patch+json
+   * 1. application/json-patch+json
+   * 2. 收益率 (+3.20%)
    * 类似这种直接忽略
    */
-  if (!str.startsWith("application")) {
+  if (!(str.startsWith("application") || /[\u4e00-\u9fa5]/.test(str))) {
     res = res.replace(/\+/g, "");
   }
 
