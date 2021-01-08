@@ -50,6 +50,18 @@ async function main() {
       console.log(`更新【${item.name}】的swagger.json √`);
     }
 
+    /**
+     * TODO:
+     * 5.0.0 版本编译出来少了部分枚举。暂时先使用 4.3.1.jar
+     * openapi-generator-4.3.1.jar
+     * 1. https://maven.aliyun.com/mvn/search
+     * 2. 搜索仓库 central 关键字 org.openapitools 选中对应jar包下载 放到
+     * node_modules\@openapitools\openapi-generator-cli\versions 目录 名称改为 {version}.jar
+     */
+    await spawnWork(
+      [`openapi-generator-cli version-manager set 4.3.1`].join(" ")
+    );
+
     await spawnWork(
       [
         "openapi-generator-cli generate",
