@@ -2,7 +2,7 @@ import { BehaviorSubject, noop } from "rxjs";
 import { useCallback, useEffect, useState } from "react";
 import { skip } from "rxjs/operators";
 
-export const useBehaviorSubjectControl = <T>(subject?: BehaviorSubject<T>) => {
+export function useBehaviorSubjectControl<T>(subject?: BehaviorSubject<T>) {
   const [value, _setValue] = useState(subject?.value);
 
   useEffect(() => {
@@ -28,4 +28,4 @@ export const useBehaviorSubjectControl = <T>(subject?: BehaviorSubject<T>) => {
     value,
     setValue,
   };
-};
+}

@@ -6,11 +6,12 @@ export {
   createSliceActionHook,
   createSliceStateHook,
   useSliceActions,
-  useSliceState
+  useSliceState,
 };
-export const createSliceHook = <T extends Slice>(slice: T) => {
+
+export function createSliceHook<T extends Slice>(slice: T) {
   return {
     ...createSliceActionHook(slice),
-    ...createSliceStateHook(slice)
+    ...createSliceStateHook(slice),
   };
-};
+}
