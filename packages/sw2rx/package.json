@@ -18,8 +18,6 @@
     "precopy-runtime": "shx rm -rf ./dist/lib/runtime",
     "copy-runtime": "shx cp -r ./src/lib/runtime ./dist/lib/runtime",
     "try-test": "yarn build && cd ./example && yarn add-dep && yarn sw",
-    "prepare": "yarn build",
-    "pub": "yarn publish",
     "l": "yarn link"
   },
   "dependencies": {

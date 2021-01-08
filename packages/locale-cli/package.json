@@ -19,9 +19,7 @@
   "scripts": {
     "prebuild": "shx rm -rf ./dist",
     "build": "tsc -p ./tsconfig.json",
-    "prepare": "yarn build",
     "start": "tsc -p ./tsconfig.json -w",
-    "pub": "yarn publish --access=public",
     "l": "yarn link"
   },
   "prettier": {
