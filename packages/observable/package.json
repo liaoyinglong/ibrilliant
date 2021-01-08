@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/observable",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -14,7 +14,8 @@
   "files": [
     "dist",
     "src",
-    "operators.js"
+    "operators.js",
+    "operators.d.ts"
   ],
   "sideEffects": false,
   "author": "liaoyinglong <vigossliao@gmail.com>",
