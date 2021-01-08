@@ -6,6 +6,7 @@
   "scripts": {
     "create-package": "lerna create",
     "clean-workspace": "lerna clean",
+    "lerna-add": "lerna add",
     "lv": "lerna version",
     "prepub": "yarn workspaces run build",
     "pub": "lerna publish",
