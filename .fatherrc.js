@@ -1,4 +1,7 @@
 /**
+ * 暂时弃用 father-build 来构建
+ * 后续引入部分ui可能会启用
+ *
  * @type {import('father').IBundleOptions}
  */
 const defaultOptions = {
