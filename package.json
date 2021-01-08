@@ -9,8 +9,10 @@
     "lerna-add": "lerna add",
     "lv": "lerna version",
     "prepub": "yarn workspaces run build",
+    "prepare": "yarn prepub",
     "pub": "lerna publish",
-    "pub-from-git": "lerna publish from-git"
+    "pub-from-git": "lerna publish from-git",
+    "pub-from-package": "lerna publish from-package"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.5.0",
