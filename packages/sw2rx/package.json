@@ -23,6 +23,7 @@
     "l": "yarn link"
   },
   "dependencies": {
+    "@ibrilliant/utils": "0.1.0",
     "@openapitools/openapi-generator-cli": "2.1.16",
     "axios": "^0.21.1",
     "commander": "^6.2.1",

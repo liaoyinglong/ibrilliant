@@ -1,9 +1,9 @@
 import { Observable, of } from "rxjs";
 import { ajax, AjaxRequest, AjaxResponse } from "rxjs/ajax";
 import { catchError, map } from "rxjs/operators";
-import { qs } from "./qs";
 
-export { qs } from "./qs";
+import { wrapperedQs as qs } from "@ibrilliant/utils";
+export { wrapperedQs as qs } from "@ibrilliant/utils";
 
 export interface BaseRes<T> {
   data: T;
