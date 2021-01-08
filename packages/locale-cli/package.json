@@ -44,5 +44,8 @@
     "node-xlsx": "^0.15.0",
     "opencc": "^1.1.1",
     "tslib": "^2.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
