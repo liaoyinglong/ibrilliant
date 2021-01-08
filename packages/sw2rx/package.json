@@ -4,6 +4,7 @@
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
+  "author": "liaoyinglong <vigossliao@gmail.com>",
   "main": "./dist/index.js",
   "license": "MIT",
   "files": [

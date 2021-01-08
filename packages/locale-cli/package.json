@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "name": "@ibrilliant/locale-cli",
-  "author": "liaoyinglong",
+  "author": "liaoyinglong <vigossliao@gmail.com>",
   "module": "dist/locale-cli.esm.js",
   "files": [
     "dist",
