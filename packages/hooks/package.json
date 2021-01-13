@@ -24,5 +24,8 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@ibrilliant/utils": "^1.0.5"
+  },
+  "devDependencies": {
+    "@umijs/fabric": "^2.4.11"
   }
 }

@@ -1,0 +1,8 @@
+tailwind.config.js
+sw2rx.config.js
+lingui.config.js
+config/**
+dist/**
+node_modules
+scripts/**
+src/apis/lib/**
