@@ -13,6 +13,9 @@ type SliceMap = Record<string, Slice>;
 type SliceActionsMap<T extends SliceMap> = {
   [SliceName in keyof T]: T[SliceName]["actions"];
 };
+type SliceReducerMap<T extends SliceMap> = {
+  [SliceName in keyof T]: T[SliceName]["reducer"];
+};
 
 export type AppActionMap = Record<
   string,
@@ -22,6 +25,16 @@ export type AppActionMap = Record<
 interface DispatcherContextValue<T extends SliceMap = SliceMap> {
   sliceDispatcher: SliceActionsMap<T>;
   appDispatcher: AppActionMap;
+}
+
+export function convertSliceMapToReducerMap<T extends SliceMap>(
+  sliceMap: T
+): SliceReducerMap<T> {
+  const res = {} as SliceReducerMap<T>;
+  Object.keys(sliceMap).forEach((sliceName) => {
+    res[sliceName as keyof T] = sliceMap[sliceName].reducer;
+  });
+  return res;
 }
 
 function combineSliceActions<T extends SliceMap>(
