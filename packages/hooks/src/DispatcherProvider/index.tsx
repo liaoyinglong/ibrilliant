@@ -1,6 +1,6 @@
 import type { Dispatch, PayloadActionCreator, Slice } from "@reduxjs/toolkit";
 import { bindActionCreators } from "redux";
-import type { PropsWithChildren } from "react";
+import type { FC } from "react";
 import React, {
   createContext,
   useContext,
@@ -73,7 +73,7 @@ export function createDispatcherProviderAndHooks<
     appDispatcher: {},
   });
 
-  function DispatcherProvider(props: PropsWithChildren<void>) {
+  const DispatcherProvider: FC = (props) => {
     const dispatch = useDispatch();
     const sliceDispatcher = useMemo(() => {
       return combineSliceActions(sliceMap, dispatch);
@@ -92,7 +92,7 @@ export function createDispatcherProviderAndHooks<
         {props.children}
       </DispatcherContext.Provider>
     );
-  }
+  };
 
   function useSliceDispatcher() {
     const dispatcherMap = useContext(DispatcherContext);
