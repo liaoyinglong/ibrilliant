@@ -4,3 +4,4 @@ export * from "./useLocationQuery";
 export * from "./useMuiInputControl";
 export * from "./useMuiTabsControl";
 export * from "./useSelectorWithIsEqual";
+export * from "./DispatcherProvider";
