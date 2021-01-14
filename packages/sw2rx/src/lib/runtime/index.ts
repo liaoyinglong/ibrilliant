@@ -73,12 +73,6 @@ export class BaseAPI {
     if (query) {
       otherArgs.url = `${otherArgs.url}${qs.stringify(query)}`;
     }
-    if (otherArgs.body) {
-      otherArgs.body =
-        otherArgs.body instanceof FormData
-          ? otherArgs.body
-          : JSON.stringify(otherArgs.body);
-    }
 
     return ajax(otherArgs).pipe(
       catchError((err) => {
