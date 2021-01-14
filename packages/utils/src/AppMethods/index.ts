@@ -5,26 +5,34 @@ const iosHelper = _.get(window, "webkit.messageHandlers");
 // 安卓 app 提供的方法
 const androidHelper = _.get(window, "android");
 
+interface NativeUrl {
+  // 资金记录 app原生界面标识
+  fundingRecords: string;
+  //  支付方式列表页面
+  payMethodsListPage: string;
+  // 实名认证界面
+  HPSeniorVerifyController: string;
+  // 我的费率界面
+  VipLevel: string;
+}
+const iosNativeUrl: NativeUrl = {
+  fundingRecords: `{"path": "HPAssetRecordController"}`,
+  payMethodsListPage: `{"path": "HPCollectionMethodController"}`,
+  HPSeniorVerifyController: `{"path": "HPSeniorVerifyController"}`,
+  VipLevel: `HPVipDetailController`,
+};
+const androidNativeUrl: NativeUrl = {
+  fundingRecords: `{"path": "HPAssetRecordController"}`,
+  payMethodsListPage: `{"uri":"model.mine.activity.PaymentActivity","isReload":true}`,
+  HPSeniorVerifyController: `{"uri":"model.kyc.activity.VerifiedActivity","isReload":true}`,
+  VipLevel: '{"uri":"model.mine.activity.FeeLevelActivity"}',
+};
+
 export class AppMethods {
   static isInAppWebView = !!iosHelper || !!androidHelper;
 
-  static get constant() {
-    const nativeUrl = {
-      // 资金记录 app原生界面标识
-      fundingRecords: `{"path": "HPAssetRecordController"}`,
-      //  支付方式列表页面
-      payMethodsListPage: `{"path": "HPCollectionMethodController"}`,
-      // 实名认证界面
-      HPSeniorVerifyController: `{"path": "HPSeniorVerifyController"}`,
-    };
+  static constant = androidHelper ? androidNativeUrl : iosNativeUrl;
 
-    if (androidHelper) {
-      nativeUrl.payMethodsListPage = `{"uri":"model.mine.activity.PaymentActivity","isReload":true}`;
-      nativeUrl.HPSeniorVerifyController = `{"uri":"model.kyc.activity.VerifiedActivity","isReload":true}`;
-    }
-
-    return nativeUrl;
-  }
   // app 右上角显示的按钮
   static showMenu(title: string, url: string) {
     if (iosHelper) {
