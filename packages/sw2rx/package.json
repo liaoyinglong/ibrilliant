@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/sw2rx",
-  "version": "1.0.5",
+  "version": "1.0.11",
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
@@ -22,7 +22,7 @@
     "l": "yarn link"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.5",
+    "@ibrilliant/utils": "^1.0.11",
     "@openapitools/openapi-generator-cli": "2.1.16",
     "axios": "^0.21.1",
     "commander": "^6.2.1",

@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/hooks",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@ibrilliant/utils": "^1.0.5"
+    "@ibrilliant/utils": "^1.0.11"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.4.11"
