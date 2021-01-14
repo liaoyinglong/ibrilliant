@@ -10,7 +10,7 @@ import React, {
 import { useDispatch } from "react-redux";
 
 type SliceMap = Record<string, Slice>;
-type SliceActionsMap<T extends SliceMap> = {
+export type SliceActionsMap<T extends SliceMap> = {
   [SliceName in keyof T]: T[SliceName]["actions"];
 };
 type SliceReducerMap<T extends SliceMap> = {

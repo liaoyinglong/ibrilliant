@@ -1,14 +1,17 @@
-import type { Slice } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
-import { useDebugValue, useMemo } from 'react';
-import { bindActionCreators } from 'redux';
-import _ from 'lodash';
+import type { Slice } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+import { useDebugValue, useMemo } from "react";
+import { bindActionCreators } from "redux";
+import _ from "lodash";
 
 type HookName<T extends string> = `use${Capitalize<T>}SliceActions`;
 type ActionName<T extends string> = `${T}SliceActions`;
 
 const cacheedBindActionCreators = _.memoize(bindActionCreators);
 
+/**
+ * @deprecated 用`createDispatcherProviderAndHooks`替代
+ */
 export function createSliceActionHook<T extends Slice>(slice: T) {
   const fn = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -16,16 +19,19 @@ export function createSliceActionHook<T extends Slice>(slice: T) {
   };
 
   const res = { [`use${_.upperFirst(slice.name)}SliceActions`]: fn } as {
-    [k in HookName<T['name']>]: typeof fn;
+    [k in HookName<T["name"]>]: typeof fn;
   };
 
   return res;
 }
 
+/**
+ * @deprecated 用`createDispatcherProviderAndHooks`替代
+ */
 export function useSliceActions<
   T extends Slice,
   R extends {
-    [k in ActionName<T['name']>]: T['actions'];
+    [k in ActionName<T["name"]>]: T["actions"];
   }
 >(slice: T) {
   const dispatch = useDispatch();
