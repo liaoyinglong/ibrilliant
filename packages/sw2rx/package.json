@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/sw2rx",
-  "version": "1.0.12",
+  "version": "1.0.15",
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
