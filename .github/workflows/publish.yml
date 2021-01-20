@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: xxx
-        run: echo "NPM_TOKEN =  ${{ $NPM_TOKEN }}!"
+        run: echo NPM_TOKEN =  $NPM_TOKEN
 
 
       - name: Check out Git repository
