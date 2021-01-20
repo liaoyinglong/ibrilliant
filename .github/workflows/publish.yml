@@ -26,7 +26,9 @@ jobs:
         run: yarn config set network-timeout 1000000
 
       - name: 安装lerna
-        run: yarn global add lerna
+        run: |
+              yarn global add lerna
+              echo "$(yarn global bin)" >> $GITHUB_PATH
 
       - name: 安装依赖2
         run: lerna bootstrap
