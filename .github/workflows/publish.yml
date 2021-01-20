@@ -13,9 +13,6 @@ jobs:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
-      - name: xxx
-        run: echo "NPM_TOKEN =  $NPM_TOKEN"
-
 
       - name: Check out Git repository
         uses: actions/checkout@v2
@@ -28,8 +25,8 @@ jobs:
       - name: 设置yarn的network-timeout
         run: yarn config set network-timeout 1000000
 
-      - name: 安装web项目依赖
-        uses: bahmutov/npm-install@v1
+      - name: 安装依赖
+        run: yarn lerna-bootstrap
 
       - name: build
         run: yarn prepare
