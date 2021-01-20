@@ -1,0 +1,36 @@
+name: 发布
+
+on:
+  workflow_dispatch:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CI: false
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    steps:
+      - name: xxx
+        run: echo "NPM_TOKEN =  ${{ $NPM_TOKEN }}!"
+
+
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: 设置yarn的network-timeout
+        run: yarn config set network-timeout 1000000
+
+      - name: 安装web项目依赖
+        uses: bahmutov/npm-install@v1
+
+      - name: build
+        run: yarn prepare
+
