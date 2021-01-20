@@ -25,7 +25,10 @@ jobs:
       - name: 设置yarn的network-timeout
         run: yarn config set network-timeout 1000000
 
-      - name: 安装依赖
+      - name: 安装依赖1
+        uses: bahmutov/npm-install@v1
+
+      - name: 安装依赖2
         run: yarn lerna-bootstrap
 
       - name: build
