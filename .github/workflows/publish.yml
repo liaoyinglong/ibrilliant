@@ -33,4 +33,4 @@ jobs:
         run: lerna bootstrap
 
       - name: build
-        run: yarn prepare
+        run: yarn build
