@@ -10,7 +10,7 @@
     "lerna-add": "lerna add",
     "lv": "lerna version",
     "prepub": "yarn workspaces run build",
-    "prepare": "yarn prepub",
+    "prepublish": "yarn workspaces run build",
     "pub": "lerna publish",
     "pub-from-git": "lerna publish from-git",
     "pub-from-package": "lerna publish from-package"
