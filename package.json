@@ -9,11 +9,10 @@
     "lerna-bootstrap": "lerna bootstrap",
     "lerna-add": "lerna add",
     "lv": "lerna version",
-    "prepub": "yarn workspaces run build",
-    "prepublish": "yarn workspaces run build",
+    "build": "yarn workspaces run build",
     "pub": "lerna publish",
-    "pub-from-git": "lerna publish from-git",
-    "pub-from-package": "lerna publish from-package"
+    "pub-from-package": "lerna publish from-package",
+    "prepub-from-package": "yarn build"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.5.0",
