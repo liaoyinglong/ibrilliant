@@ -71,6 +71,30 @@ export class AppMethods {
       androidHelper.goNativePage(url);
     }
   }
+
+  /**
+   * 跳转到对应界面   一般用在福利中心等配置的任务地方
+   * @param options
+   */
+  static goPage(options: {
+    android: string;
+    ios: string;
+    web: string;
+    newWindow?: boolean;
+  }) {
+    if (iosHelper) {
+      AppMethods.goNativePage(options.ios);
+    } else if (androidHelper) {
+      AppMethods.goNativePage(options.android);
+    } else {
+      if (options.newWindow) {
+        window.open(options.web, "_blank", "noopener=yes,noreferrer=yes");
+      } else {
+        window.location.href = options.web;
+      }
+    }
+  }
+
   /**
    * APP分享：
    * @param payload {object}
