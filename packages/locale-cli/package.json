@@ -20,7 +20,7 @@
     "prebuild": "shx rm -rf ./dist",
     "build": "tsc -p ./tsconfig.json",
     "start": "tsc -p ./tsconfig.json -w",
-    "l": "yarn link"
+    "li": "yarn link"
   },
   "prettier": {
     "printWidth": 80,
