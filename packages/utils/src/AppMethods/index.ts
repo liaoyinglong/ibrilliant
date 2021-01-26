@@ -19,7 +19,7 @@ const iosNativeUrl: NativeUrl = {
   fundingRecords: `{"path": "HPAssetRecordController"}`,
   payMethodsListPage: `{"path": "HPCollectionMethodController"}`,
   HPSeniorVerifyController: `{"path": "HPSeniorVerifyController"}`,
-  VipLevel: `HPVipDetailController`,
+  VipLevel: `{"path": "HPSeniorVerifyController"}`,
 };
 const androidNativeUrl: NativeUrl = {
   fundingRecords: `{"path": "HPAssetRecordController"}`,
