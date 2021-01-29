@@ -46,18 +46,10 @@ export class BaseAPI {
   }
 
   protected request = <T>(requestOpts: RequestOpts): Observable<BaseRes<T>> => {
-    let url = this.basePath + requestOpts.path;
+    requestOpts.url = requestOpts.url ?? this.basePath + requestOpts.path;
+    requestOpts.responseType = requestOpts.responseType ?? "json";
 
-    const params = {
-      url,
-      query: requestOpts.query,
-      method: requestOpts.method,
-      headers: requestOpts.headers,
-      body: requestOpts.body,
-      responseType: requestOpts.responseType || "json",
-    };
-
-    return this.rxjsRequest(params).pipe(
+    return this.rxjsRequest(requestOpts).pipe(
       map((ajaxRes) => {
         ajaxRes.response = ajaxRes.response ?? { data: {} };
         ajaxRes = this.middleware?.post(ajaxRes) ?? ajaxRes;
@@ -125,6 +117,9 @@ export type HttpQuery = Partial<{
 export type HttpBody = Json | FormData;
 
 export interface RequestOpts {
+  // 完整的url
+  url?: string;
+  // 接口路径
   path: string;
   method: HttpMethod;
   headers?: HttpHeaders;
