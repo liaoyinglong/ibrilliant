@@ -1,7 +1,8 @@
 import type { Slice } from "@reduxjs/toolkit";
-import { DefaultRootState, useSelector } from "react-redux";
+import type { DefaultRootState } from "react-redux";
+import { useSelector } from "react-redux";
 import _ from "lodash";
-import {isDeepEqual} from "@ibrilliant/utils";
+import { isDeepEqual } from "@ibrilliant/utils";
 
 type HookName<T extends string> = `use${Capitalize<T>}SliceState`;
 
