@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "clean": "shx rm -rf ./packages/**/*.tsbuildinfo && shx rm -rf ./packages/**/{esm,dist,next}",
     "create-package": "lerna create",
     "clean-workspace": "lerna clean",
     "lerna-bootstrap": "lerna bootstrap",
     "lerna-add": "lerna add",
     "lv": "lerna version",
+    "prebuild": "yarn clean",
     "build": "yarn workspaces run build",
     "pub": "lerna publish",
     "pub-from-package": "lerna publish from-package",

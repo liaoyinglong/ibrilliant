@@ -85,7 +85,7 @@ async function main() {
   await fs.copy(pathRelativeProject("dist/lib/runtime"), `${tempPath}/runtime`);
   console.log(`更新runtime文件 √`);
 
-  await spawnWork(`tsc -p ${path.resolve(tempPath, "./tsconfig.json")}`);
+  await spawnWork(`tsc -b ${path.resolve(tempPath, "./tsconfig.json")}`);
   console.log(`使用tsc编译成功 √`);
 
   await fs.copy(`${tempPath}/dist`, outputPath);

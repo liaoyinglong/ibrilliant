@@ -17,9 +17,8 @@
     "ibr-locale-cli": "./bin/ibr-locale-cli"
   },
   "scripts": {
-    "prebuild": "shx rm -rf ./dist",
-    "build": "tsc -p ./tsconfig.json",
-    "start": "tsc -p ./tsconfig.json -w",
+    "build": "tsc -b ./tsconfig.json",
+    "start": "tsc -b ./tsconfig.json -w",
     "li": "yarn link"
   },
   "prettier": {

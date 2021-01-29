@@ -22,4 +22,5 @@ dist
 /src/.umi-test
 /.env.local
 
-
+# TypeScript cache
+*.tsbuildinfo

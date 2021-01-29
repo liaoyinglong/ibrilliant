@@ -1,7 +1,7 @@
 import { normalize, removeCannotParsedContent } from "./index";
 import * as assert from "assert";
 import fs from "fs-extra";
-import oldJson from "./old.json";
+// import oldJson from "./old.json";
 import path from "path";
 
 // (async () => {
