@@ -1,11 +1,10 @@
 import xlsx from 'node-xlsx';
 import fs from 'fs-extra';
-import debug from 'debug';
 import { config, sortKeys } from './shared';
 import _, { Dictionary } from 'lodash';
+import { createLogger } from '@ibrilliant/utils';
 
-debug.enable('*');
-const log = debug('[语言文件转换成xlsx]');
+const log = createLogger('[语言文件转换成xlsx]');
 
 function len(obj: Dictionary<any>) {
   return Object.keys(obj || {}).length;

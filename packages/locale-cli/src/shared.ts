@@ -1,10 +1,10 @@
 import prettier from 'prettier';
-import debug from 'debug';
 import path from 'path';
 import _, { Dictionary } from 'lodash';
 import fs from 'fs-extra';
+import { createLogger } from '@ibrilliant/utils';
 
-const log = debug('shared.ts');
+const log = createLogger('shared.ts');
 
 export const defaultConfigFileName = 'locale-cli.config.js';
 

@@ -1,8 +1,8 @@
 import { config } from './shared';
 import _ from 'lodash';
-import debug from 'debug';
-debug.enable('*');
-const log = debug('[比对语言文件是否一致]');
+import { createLogger } from '@ibrilliant/utils';
+
+const log = createLogger('[比对语言文件是否一致]');
 
 /**
  * 输入 ：

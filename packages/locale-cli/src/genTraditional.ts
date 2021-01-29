@@ -1,10 +1,9 @@
 import opencc from 'opencc';
 import { Dictionary } from 'lodash';
 import { config, formatAndWrite } from './shared';
-import debug from 'debug';
+import { createLogger } from '@ibrilliant/utils';
 
-debug.enable('*');
-const log = debug('[简体转繁体]');
+const log = createLogger('[简体转繁体]');
 
 export async function converCnToHk(cnJson = config.zh_CN) {
   const converter = new opencc.OpenCC('s2t.json');

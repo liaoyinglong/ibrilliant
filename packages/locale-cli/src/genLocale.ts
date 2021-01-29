@@ -1,11 +1,10 @@
 import xlsx from 'node-xlsx';
-import _, { Dictionary } from 'lodash';
-import { config, formatAndWrite, sortKeys } from './shared';
-import debug from 'debug';
-import { converCnToHk } from './genTraditional';
+import _, {Dictionary} from 'lodash';
+import {config, formatAndWrite, sortKeys} from './shared';
+import {converCnToHk} from './genTraditional';
+import {createLogger} from '@ibrilliant/utils';
 
-debug.enable('*');
-const log = debug('[genLocale]');
+const log = createLogger('[genLocale]');
 
 type Langs = keyof typeof config.filePath;
 

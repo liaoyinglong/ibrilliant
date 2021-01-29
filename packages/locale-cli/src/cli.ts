@@ -5,8 +5,10 @@ import { genXlsx } from './genXlsx';
 import { diffLocaleKeys } from './diffLocaleKeys';
 import { Command } from 'commander';
 import { defaultConfigFileName, tryMergeUserConfig } from './shared';
+import { enableLogger } from '@ibrilliant/utils';
 const version = require('../package').version;
 
+enableLogger();
 const program = new Command();
 program
   .version(version)
