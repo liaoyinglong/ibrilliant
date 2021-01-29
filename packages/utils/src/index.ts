@@ -1,4 +1,5 @@
-export * from "./AppMethods";
-export * from "./WsService";
-export * from "./isDeepEqual";
-export * from "./wrapperedQs";
+export { AppMethods } from "./AppMethods";
+export { WsService } from "./WsService";
+export { enableLogger, createLogger } from "./logger";
+export { isDeepEqual } from "./isDeepEqual";
+export { wrapperedQs } from "./wrapperedQs";

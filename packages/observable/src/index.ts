@@ -1,4 +1,8 @@
-export * from "./creator/createNotify";
-export * from "./creator/intervalOnDocumentShow";
-export * from "./creator/subscribeWhenDocumentShow";
-export * from "./steams/documentVisible$";
+export { createNotify } from "./creator/createNotify";
+export { intervalOnDocumentShow } from "./creator/intervalOnDocumentShow";
+export { subscribeWhenDocumentShow } from "./creator/subscribeWhenDocumentShow";
+export {
+  documentHiden$,
+  documentShow$,
+  visibilitychange$,
+} from "./steams/documentVisible$";
