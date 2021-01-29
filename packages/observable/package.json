@@ -24,6 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5"
+    "@babel/runtime": "^7.12.5",
+    "@ibrilliant/utils": "^1.0.19"
   }
 }

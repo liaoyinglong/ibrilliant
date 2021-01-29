@@ -6,5 +6,6 @@
     "outDir": "./dist",
     "composite": true
   },
-  "exclude": ["./operators.js", "operators.d.ts"]
+  "exclude": ["./operators.js", "operators.d.ts"],
+  "references": [{ "path": "../utils" }]
 }
