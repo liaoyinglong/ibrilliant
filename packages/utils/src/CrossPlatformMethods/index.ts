@@ -34,14 +34,11 @@ export function createCrossPlatformMethods({
      * 3. 从cookie上获取
      */
     static getUserToken() {
-      const urlToken = parseUrlToken();
-      if (urlToken) {
-        return urlToken;
-      }
-      if (AppMethods.isInAppWebView) {
-        return AppMethods.getUserToken();
-      }
-      return getUserTokenFromCookie(ApiEnv);
+      return (
+        parseUrlToken() ||
+        AppMethods.getUserToken() ||
+        getUserTokenFromCookie(ApiEnv)
+      );
     }
 
     // TODO: 需要配置完成 urlMaps
