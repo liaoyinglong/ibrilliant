@@ -1,5 +1,5 @@
 {
-  "version": "1.0.20",
+  "version": "1.0.21",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -35,7 +35,7 @@
     "@types/prettier": "^2.1.5"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.20",
+    "@ibrilliant/utils": "^1.0.21",
     "commander": "^6.2.1",
     "inquirer": "^7.3.3",
     "node-xlsx": "^0.15.0",
