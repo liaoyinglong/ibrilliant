@@ -16,14 +16,30 @@ export function createUrl(params: CreateUrlHelpersParams) {
     return `https://${urlPrefix}${projectName}.${domainNameSubject.getValue()}`;
   }
   // 获取活动页h5的链接
-  function getH5UrlCreator(p: string) {
-    return (query: Record<string, any>) => {
+  function getH5UrlCreator<Q extends Record<string, any>>(p: string) {
+    return (query: Q) => {
       if (!_.startsWith(p, "/")) {
         p = "/" + p;
       }
       const url = `https://${
         ApiEnv.urlEnvPrefix
       }h5.${domainNameSubject.getValue()}${p}`;
+
+      return normalizeLink(url, query);
+    };
+  }
+
+  /**
+   * 生成pc 站点的链接
+   */
+  function getMainDomainUrlCreator<Q extends Record<string, any>>(p: string) {
+    return (query: Q) => {
+      if (!_.startsWith(p, "/")) {
+        p = "/" + p;
+      }
+      const url = `https://${
+        ApiEnv.urlEnvPrefix || "web"
+      }.${domainNameSubject.getValue()}${p}`;
 
       return normalizeLink(url, query);
     };
@@ -54,6 +70,32 @@ export function createUrl(params: CreateUrlHelpersParams) {
     },
     get facade() {
       return getServiceUrl("facadeapi");
+    },
+
+    /**
+     * 生成 h5.hopex.com 相关链接方法的creator
+     */
+    getH5UrlCreator,
+    getMainDomainUrlCreator,
+    /**
+     * reexport from ../normalizeLink
+     */
+    normalizeLink,
+
+    getAppQuestionUrl: getMainDomainUrlCreator<{
+      page?: string;
+      lang?: string;
+    }>(`/user/app_question`),
+
+    get ws() {
+      return `wss://${
+        ApiEnv.urlEnvPrefix
+      }api.${domainNameSubject.getValue()}/ws`;
+    },
+    get cbbcWs() {
+      return `wss://${
+        ApiEnv.urlEnvPrefix
+      }cbbcws.${domainNameSubject.getValue()}/ws`;
     },
   };
 }
