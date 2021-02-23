@@ -30,6 +30,8 @@ const androidNativeUrl: NativeUrl = {
 
 export class AppMethods {
   static isInAppWebView = !!iosHelper || !!androidHelper;
+  static isInIosWebView = !!iosHelper;
+  static isInAndroidWebView = !!androidHelper;
 
   static constant = androidHelper ? androidNativeUrl : iosNativeUrl;
 
