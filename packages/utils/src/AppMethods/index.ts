@@ -1,9 +1,11 @@
 import _ from "lodash";
 
+const haveWindow = typeof window !== "undefined";
+
 // ios app 提供的方法
-const iosHelper = _.get(window, "webkit.messageHandlers");
+const iosHelper = haveWindow && _.get(window, "webkit.messageHandlers");
 // 安卓 app 提供的方法
-const androidHelper = _.get(window, "android");
+const androidHelper = haveWindow && _.get(window, "android");
 
 interface NativeUrl {
   // 资金记录 app原生界面标识
