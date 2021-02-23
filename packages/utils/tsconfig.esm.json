@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "CommonJS",
+    "target": "ES5",
     "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "./esm",
     "composite": true
   },
   "exclude": ["jest.config.js", "dist"]

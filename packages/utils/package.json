@@ -4,15 +4,17 @@
   "description": "",
   "keywords": [],
   "scripts": {
-    "prebuild": "shx rm -rf ./{dist,*.tsbuildinfo} ",
-    "build": "tsc -b ./tsconfig.json",
+    "prebuild": "shx rm -rf ./{dist,esm,*.tsbuildinfo} ",
+    "build:esm": "tsc -b ./tsconfig.esm.json",
+    "build": "tsc -b ./tsconfig.json && yarn build:esm",
     "start": "tsc -b ./tsconfig.json -w"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./esm/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
+    "esm",
     "src"
   ],
   "author": "liaoyinglong <vigossliao@gmail.com>",

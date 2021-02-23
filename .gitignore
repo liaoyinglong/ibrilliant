@@ -12,6 +12,7 @@ openapitools.json
 
 # production
 dist
+esm
 
 # misc
 .DS_Store
