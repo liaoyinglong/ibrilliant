@@ -10,9 +10,13 @@ import { Config } from "./types";
 import path from "path";
 import { removeCannotParsedContent } from "./shared/removeCannotParsedContent";
 import { Command } from "commander";
+import { createLogger, enableLogger } from "@ibrilliant/utils";
 const version = require("../package").version;
 
 const defaultConfigFileName = `sw2rx.config.js`;
+enableLogger();
+
+const log = createLogger("sw2rx");
 
 const program = new Command();
 program
@@ -35,7 +39,7 @@ async function main() {
   if (!program.skipDownLoad) {
     await fs.emptyDir(outputPath);
     await fs.emptyDir(tempPath);
-    console.log("清空上一版本文件 √");
+    log("清空上一版本文件 √");
   }
   for (const item of swaggerUrls) {
     const jsonPath = `${outputPath}/swagger-jsons/${item.name}.json`;
@@ -47,7 +51,7 @@ async function main() {
         await fs.createFile(jsonPath);
       }
       await fs.writeFile(jsonPath, JSON.stringify(fileData, null, 2));
-      console.log(`更新【${item.name}】的swagger.json √`);
+      log(`更新【${item.name}】的swagger.json √`);
     }
 
     /**
@@ -83,14 +87,14 @@ async function main() {
     await delUnnecessaryFile(tempPath, item.name);
   }
   await fs.copy(pathRelativeProject("dist/lib/runtime"), `${tempPath}/runtime`);
-  console.log(`更新runtime文件 √`);
+  log(`更新runtime文件 √`);
 
   await spawnWork(`tsc -b ${path.resolve(tempPath, "./tsconfig.json")}`);
-  console.log(`使用tsc编译成功 √`);
+  log(`使用tsc编译成功 √`);
 
   await fs.copy(`${tempPath}/dist`, outputPath);
 
-  console.log(`copy到${outputPath}成功 √`);
+  log(`copy到${outputPath}成功 √`);
 
   if (!program.keepTempFile) {
     await fs.remove(tempPath);
