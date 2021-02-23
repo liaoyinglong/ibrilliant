@@ -1,5 +1,3 @@
-import "./shared/setJar";
-
 import * as fs from "fs-extra";
 import axios from "axios";
 import {
@@ -13,13 +11,15 @@ import path from "path";
 import { removeCannotParsedContent } from "./shared/removeCannotParsedContent";
 import { Command } from "commander";
 import { createLogger, enableLogger } from "@ibrilliant/utils";
+import { setJar } from "./shared/setJar";
+
+enableLogger("sw2rx*");
+
 const version = require("../package").version;
 
 const defaultConfigFileName = `sw2rx.config.js`;
-enableLogger();
 
 const log = createLogger("sw2rx");
-
 const program = new Command();
 program
   .version(version)
@@ -38,6 +38,7 @@ const { outputPath, swaggerUrls } = config;
 const tempPath = pathRelativeProject(".temp");
 
 async function main() {
+  await setJar();
   if (!program.skipDownLoad) {
     await fs.emptyDir(outputPath);
     await fs.emptyDir(tempPath);

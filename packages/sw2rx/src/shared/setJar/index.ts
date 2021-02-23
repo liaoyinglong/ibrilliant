@@ -15,7 +15,10 @@ export async function setJar() {
 
   const jarPath = pathRelativeProject("./jar");
 
-  await fs.copy(jarPath, normalizedPath);
-
+  await fs.copy(jarPath, normalizedPath, { overwrite: true });
+  log(`复制`);
+  log(jarPath);
+  log("到");
+  log(normalizedPath);
   log("成功");
 }
