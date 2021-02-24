@@ -23,6 +23,8 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@ibrilliant/utils": "^1.0.25",
+    "numbro": "^2.3.2",
+    "react-number-format": "^4.4.4",
     "use-constant": "^1.1.0"
   },
   "devDependencies": {
