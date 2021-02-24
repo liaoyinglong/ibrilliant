@@ -14,3 +14,10 @@ export { useMuiInputControl } from "./useMuiInputControl";
 export { useMuiTabsControl } from "./useMuiTabsControl";
 export { useSelectorWithIsEqual } from "./useSelectorWithIsEqual";
 export { useSubject } from "./useSubject";
+
+export {
+  NumberInputProps,
+  useNumberInput,
+  createNumberFormatInputComponent,
+  NumberFormatInputComponentProps,
+} from "./useNumberInput";

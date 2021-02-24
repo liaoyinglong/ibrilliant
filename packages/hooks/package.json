@@ -25,6 +25,7 @@
     "@ibrilliant/utils": "^1.0.25",
     "numbro": "^2.3.2",
     "react-number-format": "^4.4.4",
+    "react-use": "*",
     "use-constant": "^1.1.0"
   },
   "devDependencies": {
