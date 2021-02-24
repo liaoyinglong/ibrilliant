@@ -11,7 +11,7 @@ import path from "path";
 import { removeCannotParsedContent } from "./shared/removeCannotParsedContent";
 import { Command } from "commander";
 import { createLogger, enableLogger } from "@ibrilliant/utils";
-import { setJar } from "./shared/setJar";
+import { setOpenapitoolsConfig } from "./shared/setOpenapitoolsConfig";
 
 enableLogger("sw2rx*");
 
@@ -38,7 +38,7 @@ const { outputPath, swaggerUrls } = config;
 const tempPath = pathRelativeProject(".temp");
 
 async function main() {
-  await setJar();
+  await setOpenapitoolsConfig();
   if (!program.skipDownLoad) {
     await fs.emptyDir(outputPath);
     await fs.emptyDir(tempPath);
@@ -56,18 +56,6 @@ async function main() {
       await fs.writeFile(jsonPath, JSON.stringify(fileData, null, 2));
       log(`更新【${item.name}】的swagger.json √`);
     }
-
-    /**
-     * TODO:
-     * 5.0.0 版本编译出来少了部分枚举。暂时先使用 4.3.1.jar
-     * openapi-generator-4.3.1.jar
-     * 1. https://maven.aliyun.com/mvn/search
-     * 2. 搜索仓库 central 关键字 org.openapitools 选中对应jar包下载 放到
-     * node_modules\@openapitools\openapi-generator-cli\versions 目录 名称改为 {version}.jar
-     */
-    await spawnWork(
-      [`openapi-generator-cli version-manager set 4.3.1`].join(" ")
-    );
 
     await spawnWork(
       [

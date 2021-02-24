@@ -10,7 +10,7 @@
   "files": [
     "dist",
     "bin",
-    "jar"
+    "openapitools.json"
   ],
   "scripts": {
     "prebuild": "shx rm -rf ./{dist,*.tsbuildinfo}",
