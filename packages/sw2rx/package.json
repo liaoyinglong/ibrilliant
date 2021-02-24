@@ -15,7 +15,7 @@
   "scripts": {
     "prebuild": "shx rm -rf ./{dist,*.tsbuildinfo}",
     "build": "tsc -b ./tsconfig.json",
-    "postbuild": "yarn copy-template-typescript-rxjs",
+    "postbuild": "yarn copy-template-typescript-rxjs && yarn copy-runtime",
     "copy-template-typescript-rxjs": "shx cp -r ./src/template-typescript-rxjs ./dist/template-typescript-rxjs",
     "precopy-runtime": "shx rm -rf ./dist/lib/runtime",
     "copy-runtime": "shx cp -r ./src/lib/runtime ./dist/lib/runtime",
