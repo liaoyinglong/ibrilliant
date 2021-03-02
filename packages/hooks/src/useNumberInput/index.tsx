@@ -80,9 +80,27 @@ export function useNumberInput(props: NumberInputProps) {
         Math.floor(numbro(nextValue).divide(normalizedStep).value())
       ).multiply(normalizedStep);
 
-      return String(numbro(Math.max(min, Math.min(t.value(), max))).value());
+      const res = numbro(Math.max(min, Math.min(t.value(), max)));
+
+      //#region fix IBR-3220
+      /**
+       * bug： 1. => 1.2 => 1
+       * 预期： 1. => 1.2 => 1.0
+       * bug： 1.2 => 1.21 => 1.2
+       * 预期： 1.2 => 1.21 => 1.20
+       * to fix http://192.168.92.154:8080/browse/IBR-3220
+       */
+      const hasPadEnd = res.format({ mantissa: decimalScale });
+      if (
+        nextValue === hasPadEnd ||
+        (nextValue.length === hasPadEnd.length && res.value() === +hasPadEnd)
+      ) {
+        return hasPadEnd;
+      }
+      //#endregion
+      return String(res.value());
     },
-    [allowNegative, max, min, normalizedStep]
+    [allowNegative, decimalScale, max, min, normalizedStep]
   );
 
   const onChange: React.ChangeEventHandler<
