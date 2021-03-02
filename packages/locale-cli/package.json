@@ -27,20 +27,13 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "@types/fs-extra": "^9.0.3",
-    "@types/inquirer": "^7.3.1",
-    "@types/node-xlsx": "^0.15.1",
-    "@types/prettier": "^2.1.5"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@ibrilliant/utils": "^1.0.25",
     "commander": "^6.2.1",
     "inquirer": "^7.3.3",
     "node-xlsx": "^0.15.0",
-    "opencc": "^1.1.1",
-    "tslib": "^2.1.0"
+    "opencc": "^1.1.1"
   },
   "publishConfig": {
     "access": "public"
