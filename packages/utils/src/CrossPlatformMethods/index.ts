@@ -1,7 +1,7 @@
 import { ApiEnvType } from "../ApiEnv";
 import { wrapperedQs } from "../wrapperedQs";
 import jsCookies from "js-cookie";
-import { AppMethods } from "../AppMethods";
+import { AppMethods } from "../App/AppMethods";
 
 function getUserTokenFromCookie(ApiEnv: ApiEnvType) {
   let key = "userToken";
