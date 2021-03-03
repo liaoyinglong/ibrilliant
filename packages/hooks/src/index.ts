@@ -6,6 +6,7 @@ export {
 } from "./DispatcherProvider";
 
 export { createProviderAndHooks } from "./createProviderAndHooks";
+export { makeSlice } from "./makeSlice";
 export { createSliceStateHook, useSliceState } from "./createSliceHook";
 export { useBehaviorSubjectControl } from "./useBehaviorSubjectControl";
 export { useConstant } from "./useConstant";
