@@ -1,6 +1,6 @@
 import { useMemo, useReducer } from "react";
 import type { CreateSliceOptions, SliceCaseReducers } from "@reduxjs/toolkit";
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { bindActionCreators } from "redux";
 
 /**
@@ -9,6 +9,7 @@ import { bindActionCreators } from "redux";
  * @example
  * ```js
 const useSlice = makeSlice({
+  name: "name是为了debug用的",
   initialState: { count: 0 },
   reducers: {
     increment(state) {
@@ -20,9 +21,7 @@ const useSlice = makeSlice({
   },
 });
  function Comp(){
-    const slice = useSlice();
-    slice.state
-    slice.actions
+  const [state, actions] = useSlice();
  }
  * ```
  */
@@ -30,14 +29,12 @@ export function makeSlice<
   State,
   CaseReducers extends SliceCaseReducers<State>,
   Name extends string = string
->(options: Omit<CreateSliceOptions<State, CaseReducers, Name>, "name">) {
-  const slice = createSlice({
-    name: nanoid(),
-    ...options,
-  });
+>(options: CreateSliceOptions<State, CaseReducers, Name>) {
+  const slice = createSlice(options);
 
   return function useSlice(initialState = options.initialState) {
     const [state, dispatch] = useReducer(slice.reducer, initialState);
+
     const actions = useMemo(() => {
       return (bindActionCreators(
         // TODO: fix type error
@@ -47,9 +44,6 @@ export function makeSlice<
       ) as unknown) as typeof slice["actions"];
     }, []);
 
-    return {
-      state,
-      actions,
-    };
+    return [state, actions] as [State, typeof actions];
   };
 }
