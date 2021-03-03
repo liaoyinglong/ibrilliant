@@ -1,5 +1,5 @@
 {
-  "version": "1.0.25",
+  "version": "1.0.29",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -27,9 +27,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.25",
+    "@ibrilliant/utils": "^1.0.29",
     "commander": "^6.2.1",
     "inquirer": "^7.3.3",
     "node-xlsx": "^0.15.0",

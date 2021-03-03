@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/observable",
-  "version": "1.0.25",
+  "version": "1.0.29",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -24,7 +24,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.25",
+    "@ibrilliant/utils": "^1.0.29",
     "tslib": "^2.1.0"
   }
 }
