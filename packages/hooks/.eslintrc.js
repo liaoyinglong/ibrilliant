@@ -20,6 +20,7 @@ module.exports = {
     "no-restricted-properties": OFF,
     "prefer-rest-params": OFF,
     "class-methods-use-this": OFF,
+    "no-return-assign": OFF,
 
     "@typescript-eslint/lines-between-class-members": OFF,
     "@typescript-eslint/no-parameter-properties": OFF,
