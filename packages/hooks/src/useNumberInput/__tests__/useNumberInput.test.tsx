@@ -3,9 +3,7 @@ import { useNumberInput } from "../index";
 import React, { useState } from "react";
 import { fireEvent, render } from "@testing-library/react";
 
-function renderTestComponent(
-  opt: Pick<NumberInputProps, "decimalScale" | "step">
-) {
+function renderTestComponent(opt: NumberInputProps) {
   const TestComponent = () => {
     const [value, setValue] = useState("");
 
@@ -21,13 +19,16 @@ function renderTestComponent(
       onBlur: otherProps.onBlur,
     });
   };
+  const renderRes = render(<TestComponent></TestComponent>);
 
-  return render(<TestComponent></TestComponent>);
+  return {
+    ...renderRes,
+    inputNode: renderRes.container.querySelector("input")!,
+  };
 }
 describe("测试数字输入框逻辑", () => {
   it("2 位小数，最小变动价位 0.05", () => {
-    const { container } = renderTestComponent({ decimalScale: 2, step: 0.05 });
-    const inputNode = container.querySelector("input")!;
+    const { inputNode } = renderTestComponent({ decimalScale: 2, step: 0.05 });
 
     fireEvent.change(inputNode, { target: { value: "1.11" } });
     expect(inputNode.value).toBe("1.10");
@@ -37,8 +38,7 @@ describe("测试数字输入框逻辑", () => {
   });
 
   it("1 位小数，最小变动价位 0.3", () => {
-    const { container } = renderTestComponent({ decimalScale: 1, step: 0.3 });
-    const inputNode = container.querySelector("input")!;
+    const { inputNode } = renderTestComponent({ decimalScale: 1, step: 0.3 });
 
     fireEvent.change(inputNode, { target: { value: "1.1" } });
     expect(inputNode.value).toBe("0.9");
@@ -48,18 +48,55 @@ describe("测试数字输入框逻辑", () => {
   });
 
   it("1 位小数，最后一位输入不足step需要补零", () => {
-    const { container } = renderTestComponent({ decimalScale: 1, step: 0.5 });
-    const inputNode = container.querySelector("input")!;
+    const { inputNode } = renderTestComponent({ decimalScale: 1, step: 0.5 });
 
     fireEvent.change(inputNode, { target: { value: "1.2" } });
     expect(inputNode.value).toBe("1.0");
   });
 
   it("2 位小数，最后一位输入不足step需要补零", () => {
-    const { container } = renderTestComponent({ decimalScale: 2, step: 0.05 });
-    const inputNode = container.querySelector("input")!;
+    const { inputNode } = renderTestComponent({ decimalScale: 2, step: 0.05 });
 
     fireEvent.change(inputNode, { target: { value: "1.22" } });
     expect(inputNode.value).toBe("1.20");
+  });
+
+  it("最大值限制应该生效", () => {
+    const { inputNode } = renderTestComponent({
+      max: 1.1,
+      step: 0.1,
+      decimalScale: 1,
+    });
+
+    fireEvent.change(inputNode, { target: { value: "1.22" } });
+    expect(inputNode.value).toBe("1.1");
+  });
+
+  it("最小值限制应该生效", () => {
+    const { inputNode } = renderTestComponent({
+      min: 1.1,
+      step: 0.1,
+      decimalScale: 1,
+    });
+    fireEvent.change(inputNode, { target: { value: "0.92" } });
+    expect(inputNode.value).toBe("1.1");
+  });
+
+  it("负数的处理", () => {
+    const { inputNode } = renderTestComponent({
+      decimalScale: 2,
+      step: 0.05,
+      allowNegative: true,
+      min: -Infinity,
+    });
+
+    fireEvent.change(inputNode, { target: { value: "1.11" } });
+    expect(inputNode.value).toBe("1.10");
+
+    fireEvent.change(inputNode, { target: { value: "1.16" } });
+    expect(inputNode.value).toBe("1.15");
+
+    fireEvent.change(inputNode, { target: { value: "-1.16" } });
+    expect(inputNode.value).toBe("-1.15");
   });
 });

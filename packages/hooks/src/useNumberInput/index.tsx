@@ -76,8 +76,10 @@ export function useNumberInput(props: NumberInputProps) {
         return nextValue;
       }
 
+      const fn = _.startsWith(nextValue, "-") ? Math.ceil : Math.floor;
+
       const t = numbro(
-        Math.floor(numbro(nextValue).divide(normalizedStep).value())
+        fn(numbro(nextValue).divide(normalizedStep).value())
       ).multiply(normalizedStep);
 
       const res = numbro(Math.max(min, Math.min(t.value(), max)));
