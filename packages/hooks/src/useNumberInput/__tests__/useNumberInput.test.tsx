@@ -37,6 +37,15 @@ describe("测试数字输入框逻辑", () => {
     expect(inputNode.value).toBe("1.15");
   });
 
+  it("支持删除全部", () => {
+    const { inputNode } = renderTestComponent({ decimalScale: 1, step: 0.3 });
+    fireEvent.change(inputNode, { target: { value: "" } });
+    expect(inputNode.value).toBe("");
+
+    fireEvent.change(inputNode, { target: { value: " " } });
+    expect(inputNode.value).toBe("");
+  });
+
   it("1 位小数，最小变动价位 0.3", () => {
     const { inputNode } = renderTestComponent({ decimalScale: 1, step: 0.3 });
 
@@ -98,5 +107,27 @@ describe("测试数字输入框逻辑", () => {
 
     fireEvent.change(inputNode, { target: { value: "-1.16" } });
     expect(inputNode.value).toBe("-1.15");
+  });
+
+  it("不传step应该根据decimalScale生成", () => {
+    const { inputNode } = renderTestComponent({
+      decimalScale: 2,
+    });
+    fireEvent.change(inputNode, { target: { value: "0.92222" } });
+    expect(inputNode.value).toBe("0.92");
+  });
+
+  it("onBlur的时候应该修正最小变动价位", () => {
+    const { inputNode } = renderTestComponent({
+      decimalScale: 0,
+      step: 5,
+    });
+    fireEvent.change(inputNode, { target: { value: "12" } });
+    fireEvent.blur(inputNode);
+    expect(inputNode.value).toBe("10");
+
+    fireEvent.change(inputNode, { target: { value: "10" } });
+    fireEvent.blur(inputNode);
+    expect(inputNode.value).toBe("10");
   });
 });
