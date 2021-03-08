@@ -7,3 +7,4 @@ export { getDeviceID } from "./getDeviceID";
 export { isDeepEqual } from "./isDeepEqual";
 export { wrapperedQs } from "./wrapperedQs";
 export { WsService } from "./WsService";
+export { openWindowByBlank } from "./openWindowByBlank";

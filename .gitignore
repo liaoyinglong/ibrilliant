@@ -25,3 +25,4 @@ esm
 
 # TypeScript cache
 *.tsbuildinfo
+/packages/*/coverage/
