@@ -6,5 +6,6 @@
     "outDir": "./dist",
     "composite": true
   },
-  "references": [{ "path": "../utils" }]
+  "references": [{ "path": "../utils" }],
+  "exclude": ["jest.config.js", "coverage"]
 }
