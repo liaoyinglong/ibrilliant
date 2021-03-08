@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/hooks",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.31",
+    "@ibrilliant/utils": "^1.0.33",
     "use-constant": "^1.1.0"
   }
 }
