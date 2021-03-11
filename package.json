@@ -11,7 +11,7 @@
     "lerna-add": "lerna add",
     "lv": "lerna version",
     "prebuild": "yarn clean",
-    "build": "yarn workspaces run build",
+    "build": "lerna run --scope @ibrilliant/* --parallel build",
     "prepub-from-package": "yarn build",
     "pub-from-package": "lerna publish from-package"
   },
