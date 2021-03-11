@@ -1,10 +1,10 @@
 import * as fs from "fs-extra";
 import axios from "axios";
 import {
+  delUnnecessaryFile,
   pathRelativeCwd,
   pathRelativeProject,
   spawnWork,
-  delUnnecessaryFile,
 } from "./helpers";
 import { Config } from "./types";
 import path from "path";
@@ -12,6 +12,7 @@ import { removeCannotParsedContent } from "./shared/removeCannotParsedContent";
 import { Command } from "commander";
 import { createLogger, enableLogger } from "@ibrilliant/utils";
 import { setOpenapitoolsConfig } from "./shared/setOpenapitoolsConfig";
+import { normalizeResponseType } from "./shared/normalizeResponseType";
 
 enableLogger("sw2rx*");
 
@@ -49,7 +50,9 @@ async function main() {
 
     if (!program.skipDownLoad) {
       const res = await axios.get(item.url);
-      const fileData = removeCannotParsedContent(res.data);
+      let fileData = removeCannotParsedContent(res.data);
+      fileData = normalizeResponseType(fileData);
+
       if (!fs.existsSync(jsonPath)) {
         await fs.createFile(jsonPath);
       }

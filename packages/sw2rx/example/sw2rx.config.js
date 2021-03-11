@@ -23,11 +23,11 @@ module.exports = {
     //     "Hopex Operation Center Doc,运营中心api文件（公告/banner/app版本更新等）",
     //   url: "http://192.168.70.131:5100/swagger/v1/swagger.json",
     // },
-    {
-      name: "user",
-      desc: "Hopex User System API Doc",
-      url: "http://192.168.70.131:5001/swagger/v1/swagger.json",
-    },
+    // {
+    //   name: "user",
+    //   desc: "Hopex User System API Doc",
+    //   url: "http://192.168.70.131:5001/swagger/v1/swagger.json",
+    // },
     // {
     //   name: "cbbcApi",
     //   desc: "Hopex CBBC ApiGateway",
@@ -38,5 +38,10 @@ module.exports = {
     //   desc: "Hopex OTC System Doc",
     //   url: "http://192.168.70.131:5105/swagger/v1/swagger.json",
     // },
+    {
+      name: "community",
+      desc: "社区（聊天室）API",
+      url: "http://192.168.70.131:5306/swagger/v1/swagger.json",
+    },
   ],
 };
