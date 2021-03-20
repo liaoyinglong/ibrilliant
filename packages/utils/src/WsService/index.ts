@@ -163,7 +163,6 @@ export class WsService {
       .pipe(
         switchMap(() => {
           return interval(this.config.hearbeatInterval).pipe(
-            takeUntil(this.wsClose$),
             tap(() => {
               // 发送ping之前检查一下 最后 当前时间 - 最后回复时间 是不是大于超时时间
               // 并且需要重置 最后接收到回复的时间
@@ -176,7 +175,8 @@ export class WsService {
               } else {
                 this.ws$.next(heartbeatMsgMap.ping);
               }
-            })
+            }),
+            takeUntil(this.wsClose$)
           );
         })
       )
