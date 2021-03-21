@@ -1,13 +1,8 @@
 import debug from "debug";
-import _, { Dictionary } from "lodash";
-import {
-  identity,
-  interval,
-  Observable,
-  Subject,
-  throwError,
-  timer,
-} from "rxjs";
+import type { Dictionary } from "lodash";
+import _ from "lodash";
+import type { Observable } from "rxjs";
+import { identity, interval, Subject, throwError, timer } from "rxjs";
 import {
   delayWhen,
   exhaustMap,
@@ -20,7 +15,8 @@ import {
   takeUntil,
   tap,
 } from "rxjs/operators";
-import { webSocket, WebSocketSubject } from "rxjs/webSocket";
+import type { WebSocketSubject } from "rxjs/webSocket";
+import { webSocket } from "rxjs/webSocket";
 
 const pako = require("pako");
 
@@ -166,11 +162,20 @@ export class WsService {
             tap(() => {
               // 发送ping之前检查一下 最后 当前时间 - 最后回复时间 是不是大于超时时间
               // 并且需要重置 最后接收到回复的时间
-              if (Date.now() - this.lastReplayTime >= this.config.timeout) {
-                this.lastReplayTime = Date.now();
+              const n = Date.now();
+              const diff = n - this.lastReplayTime;
+              if (diff >= this.config.timeout) {
+                this.lastReplayTime = n;
                 this.error({
                   code: 4888,
-                  reason: "服务器超长时间不回复，前端主动断开连接",
+                  reason: `服务器超长时间不回复，前端主动断开连接。${JSON.stringify(
+                    {
+                      diff,
+                      n,
+                      lastReplayTime: this.lastReplayTime,
+                      timeout: this.config.timeout,
+                    }
+                  )}`,
                 });
               } else {
                 this.ws$.next(heartbeatMsgMap.ping);
