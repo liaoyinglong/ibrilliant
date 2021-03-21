@@ -5,9 +5,17 @@ export {
   createDispatcherProviderAndHooks,
 } from "./DispatcherProvider";
 
+export {
+  NumberInputProps,
+  useNumberInput,
+  createNumberFormatInputComponent,
+  NumberFormatInputComponentProps,
+} from "./useNumberInput";
+
 export { createProviderAndHooks } from "./createProviderAndHooks";
-export { makeSlice } from "./makeSlice";
 export { createSliceStateHook, useSliceState } from "./createSliceHook";
+export { makeSlice } from "./makeSlice";
+export { useActionPending } from "./useActionPending";
 export { useBehaviorSubjectControl } from "./Observable/useBehaviorSubjectControl";
 export { useConstant } from "./useConstant";
 export { useLocationQuery } from "./useLocationQuery";
@@ -16,10 +24,3 @@ export { useMuiTabsControl } from "./useMuiTabsControl";
 export { useSelectorWithIsEqual } from "./useSelectorWithIsEqual";
 export { useSubject } from "./Observable/useSubject";
 export { useSubscribe } from "./Observable/useSubscribe";
-
-export {
-  NumberInputProps,
-  useNumberInput,
-  createNumberFormatInputComponent,
-  NumberFormatInputComponentProps,
-} from "./useNumberInput";

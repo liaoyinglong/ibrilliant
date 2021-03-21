@@ -32,6 +32,11 @@ module.exports = {
     "react/no-unescaped-entities": OFF,
 
     "react-hooks/rules-of-hooks": ERROR,
-    "react-hooks/exhaustive-deps": ERROR,
+    "react-hooks/exhaustive-deps": [
+      "ERROR",
+      {
+        additionalHooks: "(useLoginedEffect|useSubscribe)",
+      },
+    ],
   },
 };
