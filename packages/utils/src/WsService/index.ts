@@ -158,12 +158,15 @@ export class WsService {
     this.wsOpen$
       .pipe(
         switchMap(() => {
+          this.logger("连接open, 重置lastReplayTime");
+          this.lastReplayTime = Date.now();
           return interval(this.config.hearbeatInterval).pipe(
             tap(() => {
               // 发送ping之前检查一下 最后 当前时间 - 最后回复时间 是不是大于超时时间
               // 并且需要重置 最后接收到回复的时间
               const n = Date.now();
-              const diff = n - this.lastReplayTime;
+              const oldLastReplayTime = this.lastReplayTime;
+              const diff = n - oldLastReplayTime;
               if (diff >= this.config.timeout) {
                 this.lastReplayTime = n;
                 this.error({
@@ -172,7 +175,7 @@ export class WsService {
                     {
                       diff,
                       n,
-                      lastReplayTime: this.lastReplayTime,
+                      oldLastReplayTime,
                       timeout: this.config.timeout,
                     }
                   )}`,
