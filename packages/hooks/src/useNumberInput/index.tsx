@@ -92,7 +92,7 @@ export function useNumberInput(props: NumberInputProps) {
        * 预期： 1.2 => 1.21 => 1.20
        * to fix http://192.168.92.154:8080/browse/IBR-3220
        */
-      const hasPadEnd = res.format({ mantissa: decimalScale });
+      const hasPadEnd = res.format({ mantissa: decimalScale || 0 });
       if (
         nextValue === hasPadEnd ||
         (nextValue.length === hasPadEnd.length && res.value() === +hasPadEnd)
