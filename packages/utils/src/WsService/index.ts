@@ -6,6 +6,7 @@ import { identity, interval, Subject, throwError, timer } from "rxjs";
 import {
   delayWhen,
   exhaustMap,
+  finalize,
   map,
   merge,
   pluck,
@@ -183,7 +184,10 @@ export class WsService {
                 this.ws$.next(heartbeatMsgMap.ping);
               }
             }),
-            takeUntil(this.wsClose$)
+            takeUntil(this.wsClose$),
+            finalize(() => {
+              this.errorLogger("停止发送心跳检测");
+            })
           );
         })
       )
