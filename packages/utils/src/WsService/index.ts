@@ -169,16 +169,15 @@ export class WsService {
               const diff = n - oldLastReplayTime;
               if (diff >= this.config.timeout) {
                 this.lastReplayTime = n;
+                this.errorLogger(`心跳检测超时 %O`, {
+                  diff,
+                  n,
+                  oldLastReplayTime,
+                  timeout: this.config.timeout,
+                });
                 this.error({
                   code: 4888,
-                  reason: `服务器超长时间不回复，前端主动断开连接。${JSON.stringify(
-                    {
-                      diff,
-                      n,
-                      oldLastReplayTime,
-                      timeout: this.config.timeout,
-                    }
-                  )}`,
+                  reason: `心跳检测超时`,
                 });
               } else {
                 this.ws$.next(heartbeatMsgMap.ping);
