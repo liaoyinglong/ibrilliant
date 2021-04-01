@@ -94,7 +94,7 @@ function transformByEsbuild(
           : fileTypes.isTsx
           ? "tsx"
           : "ts",
-      target: "es2015",
+      target: "chrome88",
       jsxFactory: "jsx",
       jsxFragment: "__Fragment",
       //TODO: 开启压缩会导致 react-refresh 失效 原因未知，后续在看看
