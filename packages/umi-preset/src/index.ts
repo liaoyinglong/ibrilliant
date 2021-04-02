@@ -2,6 +2,7 @@ export default () => {
   return {
     plugins: [
       require.resolve("./plugins/rewriteFastRefresh"),
+      require.resolve("./plugins/ignoreApisLib"),
       require.resolve("./plugins/emotion"),
       require.resolve("./plugins/rewriteExtractCssLoader"),
       require.resolve("./plugins/rewritePostcssLoader"),
