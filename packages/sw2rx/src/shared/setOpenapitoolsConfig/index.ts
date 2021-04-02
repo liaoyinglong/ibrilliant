@@ -1,6 +1,6 @@
-import { pathRelativeCwd, pathRelativeProject } from "../../helpers";
-import * as fs from "fs-extra";
 import { createLogger } from "@ibrilliant/utils";
+import { paths } from "../paths";
+import * as fs from "fs";
 
 const log = createLogger("sw2rx.设置openapitools.json");
 
@@ -13,10 +13,10 @@ const log = createLogger("sw2rx.设置openapitools.json");
  * node_modules\@openapitools\openapi-generator-cli\versions 目录 名称改为 {version}.jar
  */
 export async function setOpenapitoolsConfig() {
-  const jsonPath = pathRelativeProject("openapitools.json");
-  const targetPath = pathRelativeCwd("openapitools.json");
+  const jsonPath = paths.defaultOpenapitoolsJson;
+  const targetPath = paths.userOpenapitoolsJson;
 
-  await fs.copyFile(jsonPath, targetPath);
+  await fs.promises.copyFile(jsonPath, targetPath);
 
   log(`复制`);
   log(jsonPath);

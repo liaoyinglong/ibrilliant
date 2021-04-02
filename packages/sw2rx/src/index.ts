@@ -1,18 +1,14 @@
 import * as fs from "fs-extra";
 import axios from "axios";
-import {
-  delUnnecessaryFile,
-  pathRelativeCwd,
-  pathRelativeProject,
-  spawnWork,
-} from "./helpers";
-import { Config } from "./types";
+import { delUnnecessaryFile, spawnWork } from "./helpers";
 import path from "path";
 import { removeCannotParsedContent } from "./shared/removeCannotParsedContent";
 import { Command } from "commander";
 import { createLogger, enableLogger } from "@ibrilliant/utils";
 import { setOpenapitoolsConfig } from "./shared/setOpenapitoolsConfig";
 import { normalizeResponseType } from "./shared/normalizeResponseType";
+import { getConfig } from "./shared/config";
+import { paths } from "./shared/paths";
 
 enableLogger("sw2rx*");
 
@@ -32,13 +28,12 @@ program
   .option("--keepTempFile", "跳过删除临时文件步骤")
   .parse(process.argv);
 
-const config: Config = require(pathRelativeCwd(defaultConfigFileName));
-
-const { outputPath, swaggerUrls } = config;
-
-const tempPath = pathRelativeProject(".temp");
-
 async function main() {
+  const config = await getConfig();
+  const tempPath = paths.tempPath;
+
+  const { outputPath, swaggerUrls } = config;
+
   await setOpenapitoolsConfig();
   if (!program.skipDownLoad) {
     await fs.emptyDir(outputPath);
@@ -46,7 +41,11 @@ async function main() {
     log("清空上一版本文件 √");
   }
   for (const item of swaggerUrls) {
-    const jsonPath = `${outputPath}/swagger-jsons/${item.name}.json`;
+    const jsonPath = path.join(
+      outputPath,
+      "swagger-jsons",
+      `${item.name}.json`
+    );
 
     if (!program.skipDownLoad) {
       const res = await axios.get(item.url);
@@ -67,7 +66,7 @@ async function main() {
         `-g typescript-rxjs`,
         `-o ${tempPath}/${item.name}`,
         `--skip-validate-spec`,
-        `-t ${pathRelativeProject("dist/template-typescript-rxjs")}`,
+        `-t ${paths.templatePath}`,
         `--additional-properties=supportsES6=false`,
       ].join(" ")
     );
@@ -80,7 +79,7 @@ async function main() {
 
     await delUnnecessaryFile(tempPath, item.name);
   }
-  await fs.copy(pathRelativeProject("dist/lib/runtime"), `${tempPath}/runtime`);
+  await fs.copy(paths.runtime, `${tempPath}/runtime`);
   log(`更新runtime文件 √`);
 
   await spawnWork(`tsc -b ${path.resolve(tempPath, "./tsconfig.json")}`);
@@ -90,9 +89,9 @@ async function main() {
 
   log(`copy到${outputPath}成功 √`);
 
-  if (!program.keepTempFile) {
-    await fs.remove(tempPath);
-  }
+  // if (!program.keepTempFile) {
+  //   await fs.remove(tempPath);
+  // }
 }
 
 main();

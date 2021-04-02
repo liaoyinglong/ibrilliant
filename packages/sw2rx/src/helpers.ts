@@ -5,10 +5,6 @@ import { createLogger } from "@ibrilliant/utils";
 
 const log = createLogger("sw2rx.helpers");
 
-export function pathRelativeProject(str: string) {
-  return path.resolve(__dirname, "..", str);
-}
-
 export function pathRelativeCwd(str: string) {
   return path.resolve(process.cwd(), str);
 }
