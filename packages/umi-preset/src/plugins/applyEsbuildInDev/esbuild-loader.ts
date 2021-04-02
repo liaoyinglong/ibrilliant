@@ -106,6 +106,10 @@ function transformByEsbuild(
   );
 }
 
+const options = {
+  enableReactRefrsh: /(components|HComponents|routes|pages)/,
+};
+
 export async function transform(code: string, resourcePath: string) {
   const fileTypes = {
     isJs: resourcePath.endsWith(".js"),
@@ -113,10 +117,15 @@ export async function transform(code: string, resourcePath: string) {
     isTs: resourcePath.endsWith(".ts"),
     isTsx: resourcePath.endsWith(".tsx"),
   };
-  let babelRes = await transformByBabel(code, resourcePath, fileTypes);
-  if (!babelRes?.code) {
-    return code;
+  let needEsbuildTransformCode = code;
+
+  if (options.enableReactRefrsh.test(resourcePath)) {
+    let babelRes = await transformByBabel(code, resourcePath, fileTypes);
+    if (!babelRes?.code) {
+      return code;
+    }
+    needEsbuildTransformCode = babelRes.code;
   }
 
-  return transformByEsbuild(babelRes.code, resourcePath, fileTypes);
+  return transformByEsbuild(needEsbuildTransformCode, resourcePath, fileTypes);
 }

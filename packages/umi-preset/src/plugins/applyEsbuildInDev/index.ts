@@ -21,8 +21,6 @@ export default function applyEsbuildInDev(api: IApi) {
       item.loader(require.resolve("./esbuild-loader"));
     });
 
-    config.devtool(false);
-
     return config;
   });
 }
