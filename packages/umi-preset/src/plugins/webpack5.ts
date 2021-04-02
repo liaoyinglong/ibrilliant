@@ -29,17 +29,6 @@ export default function webpack5(api: IApi) {
       });
     });
 
-    config.plugin("fastRefresh").tap(([options]) => {
-      return [
-        {
-          ...options,
-          overlay: false,
-          exclude: /node_modules/i,
-          include: /\.([jt]sx)$/i,
-        },
-      ];
-    });
-
     return config;
   });
 }
