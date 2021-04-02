@@ -1,13 +1,4 @@
-import { normalize, removeCannotParsedContent } from "./index";
-import * as assert from "assert";
-import fs from "fs-extra";
-// import oldJson from "./old.json";
-import path from "path";
-
-// (async () => {
-//   const res = removeCannotParsedContent(oldJson);
-//   await fs.writeJSON(path.resolve(__dirname, "./new.json"), res);
-// })();
+import { removeCannotParsedContent } from "./index";
 
 const arr = [
   {
@@ -50,14 +41,10 @@ const inputStr = arr.map((item) => item.input);
 
 const target = arr.map((item) => item.output);
 
-const res = removeCannotParsedContent(inputStr);
+describe("removeCannotParsedContent", function () {
+  it("移除成功", () => {
+    const res = removeCannotParsedContent(inputStr);
 
-console.log("target = ", target);
-
-assert.strictEqual(res.join(","), target.join(","), "与预期不符");
-
-// const res1 = inputStr.map((item) => {
-//   return normalize(item);
-// });
-//
-// console.log(res1);
+    expect(res).toEqual(target);
+  });
+});
