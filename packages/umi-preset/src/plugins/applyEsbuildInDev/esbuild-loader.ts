@@ -57,7 +57,19 @@ function transformByBabel(
   }
 
   if (fileTypes.isJsx || fileTypes.isTsx) {
-    babelPlugins.push(require.resolve("react-refresh/babel"));
+    babelPlugins.push(
+      [
+        require.resolve("@emotion/babel-plugin"),
+        {
+          // sourceMap is on by default but source maps are dead code eliminated in production
+          sourceMap: true,
+          autoLabel: "dev-only",
+          labelFormat: "[local]",
+          cssPropOptimization: true,
+        },
+      ],
+      require.resolve("react-refresh/babel")
+    );
   }
 
   return babel.transformAsync(code, {
