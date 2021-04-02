@@ -17,16 +17,6 @@ export async function spawnWork(command: string) {
 }
 
 export async function delUnnecessaryFile(outputPath: string, name: string) {
-  const tasks = [
-    ".openapi-generator",
-    ".gitignore",
-    ".openapi-generator-ignore",
-    "runtime.ts",
-    "tsconfig.json",
-  ];
-
-  for (const task of tasks) {
-    await fs.remove(`${outputPath}/${name}/${task}`);
-  }
+  await fs.remove(`${outputPath}/${name}/runtime.ts`);
   log(`删除【${name}】文件夹不必要的一些文件 √`);
 }
