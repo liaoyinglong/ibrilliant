@@ -68,7 +68,7 @@ async function main() {
         `-o ${tempPath}/${item.name}`,
         `--skip-validate-spec`,
         `-t ${pathRelativeProject("dist/template-typescript-rxjs")}`,
-        `--additional-properties=supportsES6=true`,
+        `--additional-properties=supportsES6=false`,
       ].join(" ")
     );
 
