@@ -12,7 +12,7 @@
     "lv": "lerna version",
     "prebuild": "yarn clean",
     "build": "lerna run --scope @ibrilliant/* --parallel build",
-    "prepub-from-package": "yarn build",
+    "prepub-from-package": "yarn lv && yarn build",
     "pub-from-package": "lerna publish from-package"
   },
   "devDependencies": {
