@@ -13,5 +13,3 @@ export const paths = {
   defaultOpenapitoolsJson: path.join(projectPath, "openapitools.json"),
   userOpenapitoolsJson: pathRelativeCwd("openapitools.json"),
 };
-
-console.log(paths);

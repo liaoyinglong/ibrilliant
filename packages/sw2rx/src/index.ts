@@ -30,6 +30,7 @@ program
 async function main() {
   const config = await getConfig();
   const tempPath = paths.tempPath;
+  const tsconfigPath = path.resolve(paths.tempPath, "./tsconfig.json");
 
   const { outputPath, swaggerUrls } = config;
 
@@ -71,18 +72,16 @@ async function main() {
       ].join(" ")
     );
 
-    await fs.move(
-      `${tempPath}/${item.name}/tsconfig.json`,
-      `${tempPath}/tsconfig.json`,
-      { overwrite: true }
-    );
+    if (!fs.existsSync(tsconfigPath)) {
+      await fs.copy(`${tempPath}/${item.name}/tsconfig.json`, tsconfigPath);
+    }
 
     await delUnnecessaryFile(tempPath, item.name);
   }
   await fs.copy(paths.runtime, `${tempPath}/runtime`);
   log(`更新runtime文件 √`);
 
-  await compile(outputPath);
+  await compile(outputPath, tsconfigPath);
 
   log(`使用tsc编译成功 √`);
 }
