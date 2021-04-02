@@ -9,6 +9,7 @@ import { setOpenapitoolsConfig } from "./shared/setOpenapitoolsConfig";
 import { normalizeResponseType } from "./shared/normalizeResponseType";
 import { getConfig } from "./shared/config";
 import { paths } from "./shared/paths";
+import { compile } from "./shared/compile";
 
 enableLogger("sw2rx*");
 
@@ -24,8 +25,6 @@ program
     "-c, --config [fileName]",
     `指定配置文件路径，默认<root-dir>/${defaultConfigFileName}`
   )
-  .option("--skipDownLoad", "跳过下载swagger.json步骤")
-  .option("--keepTempFile", "跳过删除临时文件步骤")
   .parse(process.argv);
 
 async function main() {
@@ -37,9 +36,10 @@ async function main() {
   await setOpenapitoolsConfig();
   if (!program.skipDownLoad) {
     await fs.emptyDir(outputPath);
-    await fs.emptyDir(tempPath);
-    log("清空上一版本文件 √");
   }
+  await fs.emptyDir(tempPath);
+  log("清空上一版本文件 √");
+
   for (const item of swaggerUrls) {
     const jsonPath = path.join(
       outputPath,
@@ -82,16 +82,9 @@ async function main() {
   await fs.copy(paths.runtime, `${tempPath}/runtime`);
   log(`更新runtime文件 √`);
 
-  await spawnWork(`tsc -b ${path.resolve(tempPath, "./tsconfig.json")}`);
+  await compile(outputPath);
+
   log(`使用tsc编译成功 √`);
-
-  await fs.copy(`${tempPath}/dist`, outputPath);
-
-  log(`copy到${outputPath}成功 √`);
-
-  // if (!program.keepTempFile) {
-  //   await fs.remove(tempPath);
-  // }
 }
 
 main();
