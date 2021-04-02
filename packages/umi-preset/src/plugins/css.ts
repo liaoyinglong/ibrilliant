@@ -22,7 +22,6 @@ export default function css(api: IApi) {
     });
 
     [
-      config.module.rule("css").oneOf("css-modules"),
       config.module.rule("less").oneOf("css-modules"),
       config.module.rule("sass").oneOf("css-modules"),
     ].forEach((item) => {
