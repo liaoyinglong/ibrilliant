@@ -10,7 +10,7 @@ import { normalizeResponseType } from "./shared/normalizeResponseType";
 import { getConfig } from "./shared/config";
 import { paths } from "./shared/paths";
 import { compile } from "./shared/compile";
-import { renameModelsFileToDTS } from "./shared/renameModelsFileToDTS";
+import { deleteExportEmptyObjectFile } from "./shared/deleteExportEmptyObjectFile";
 
 enableLogger("sw2rx*");
 
@@ -82,10 +82,10 @@ async function main() {
   await fs.copy(paths.runtime, `${tempPath}/runtime`);
   log(`更新runtime文件 √`);
 
-  await renameModelsFileToDTS(outputPath, swaggerUrls);
   await compile(outputPath, tsconfigPath);
-
   log(`使用tsc编译成功 √`);
+
+  await deleteExportEmptyObjectFile(outputPath, swaggerUrls);
 }
 
 main();

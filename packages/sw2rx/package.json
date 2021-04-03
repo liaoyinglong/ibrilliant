@@ -28,9 +28,13 @@
     "axios": "^0.21.1",
     "commander": "^6.2.1",
     "find-cache-dir": "^3",
-    "cosmiconfig": "^7.0.0"
+    "cosmiconfig": "^7.0.0",
+    "fast-glob": "^3"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

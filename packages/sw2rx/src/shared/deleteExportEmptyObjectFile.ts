@@ -1,12 +1,11 @@
 import fs from "fs-extra";
-import { paths } from "./paths";
 import { createLogger } from "@ibrilliant/utils";
 import path from "path";
 import { Config } from "./config";
 
-const log = createLogger("sw2rx.renameModelsFileToDTS");
+const log = createLogger("sw2rx");
 
-export async function renameModelsFileToDTS(
+export async function deleteExportEmptyObjectFile(
   outputPath: string,
   swaggerUrls: Config["swaggerUrls"]
 ) {
@@ -17,17 +16,19 @@ export async function renameModelsFileToDTS(
   );
 
   async function work(dir: string) {
-    const modelsPath = path.join(paths.tempPath, dir, "models");
-    const newModelsPath = path.join(outputPath, dir, "models");
+    const modelsPath = path.join(outputPath, dir, "models");
     const items = await fs.readdir(modelsPath);
+
     await Promise.all(
       items.map(async (item) => {
         const p = path.join(modelsPath, item);
-        await fs.rename(p, p.replace(".ts", ".d.ts"));
+        const r = await fs.readFile(p);
+        const content = r.toString();
+        if (content.includes("export {};")) {
+          log(`删除 ${dir}/models/${item}`);
+          await fs.remove(p);
+        }
       })
     );
-
-    await fs.copy(modelsPath, newModelsPath);
-    log(`移动 【${dir}/models】 到 output目录`);
   }
 }
