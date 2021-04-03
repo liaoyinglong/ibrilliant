@@ -19,6 +19,8 @@ export async function deleteExportEmptyObjectFile(
     const modelsPath = path.join(outputPath, dir, "models");
     const items = await fs.readdir(modelsPath);
 
+    const indexBuffer = await fs.readFile(`${modelsPath}/index.js`);
+    let indexContent = indexBuffer.toString();
     await Promise.all(
       items.map(async (item) => {
         const p = path.join(modelsPath, item);
@@ -27,8 +29,13 @@ export async function deleteExportEmptyObjectFile(
         if (content.includes("export {};")) {
           log(`删除 ${dir}/models/${item}`);
           await fs.remove(p);
+          indexContent = indexContent.replace(
+            `export * from './${item.replace(".js", "")}';`,
+            ""
+          );
         }
       })
     );
+    await fs.writeFile(`${modelsPath}/index.js`, `export {};${indexContent}`);
   }
 }
