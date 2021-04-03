@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/sw2rx",
-  "version": "1.0.43",
+  "version": "1.0.53",
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
@@ -27,9 +27,9 @@
     "@openapitools/openapi-generator-cli": "2.1.16",
     "axios": "^0.21.1",
     "commander": "^6.2.1",
-    "find-cache-dir": "^3",
     "cosmiconfig": "^7.0.0",
-    "fast-glob": "^3"
+    "fast-glob": "^3",
+    "find-cache-dir": "^3"
   },
   "publishConfig": {
     "access": "public"
