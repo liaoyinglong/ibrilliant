@@ -19,7 +19,7 @@
     "copy-template-typescript-rxjs": "shx cp -r ./src/template-typescript-rxjs ./dist/template-typescript-rxjs",
     "precopy-runtime": "shx rm -rf ./dist/lib/runtime",
     "copy-runtime": "shx cp -r ./src/lib/runtime ./dist/lib/runtime",
-    "try-test": "yarn build && cd ./example && yarn add-dep && yarn sw",
+    "try-test": "yarn build && cd ./example && yarn sw",
     "l": "yarn link"
   },
   "dependencies": {

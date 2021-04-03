@@ -1,7 +1,7 @@
 import * as path from "path";
 import { spawn } from "child_process";
-import * as fs from "fs-extra";
 import { createLogger } from "@ibrilliant/utils";
+import * as fs from "fs";
 
 const log = createLogger("sw2rx.helpers");
 
@@ -17,6 +17,6 @@ export async function spawnWork(command: string) {
 }
 
 export async function delUnnecessaryFile(outputPath: string, name: string) {
-  await fs.remove(`${outputPath}/${name}/runtime.ts`);
+  await fs.promises.rm(`${outputPath}/${name}/runtime.ts`);
   log(`删除【${name}】文件夹不必要的一些文件 √`);
 }

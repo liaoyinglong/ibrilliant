@@ -7,7 +7,7 @@ const thunk = findCacheDir({ name: "ibr.sw2rx", thunk: true });
 const projectPath = path.dirname(require.resolve(`${name}/package.json`));
 
 export const paths = {
-  tempPath: thunk("temp"),
+  tempPath: thunk(),
   templatePath: path.join(projectPath, "dist/template-typescript-rxjs"),
   runtime: path.join(projectPath, "dist/lib/runtime"),
   defaultOpenapitoolsJson: path.join(projectPath, "openapitools.json"),
