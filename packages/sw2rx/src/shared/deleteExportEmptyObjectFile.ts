@@ -2,6 +2,7 @@ import fs from "fs-extra";
 import { createLogger } from "@ibrilliant/utils";
 import path from "path";
 import { Config } from "./config";
+import * as os from "os";
 
 const log = createLogger("sw2rx");
 
@@ -30,12 +31,15 @@ export async function deleteExportEmptyObjectFile(
           log(`删除 ${dir}/models/${item}`);
           await fs.remove(p);
           indexContent = indexContent.replace(
-            `export * from './${item.replace(".js", "")}';`,
+            `export * from './${item.replace(".js", "")}';${os.EOL}`,
             ""
           );
         }
       })
     );
-    await fs.writeFile(`${modelsPath}/index.js`, `export {};${indexContent}`);
+    await fs.writeFile(
+      `${modelsPath}/index.js`,
+      `export {};${os.EOL}${indexContent}`
+    );
   }
 }
