@@ -7,6 +7,7 @@ export default () => {
       require.resolve("./plugins/ignoreApisLib"),
       require.resolve("./plugins/emotion"),
       require.resolve("./plugins/webpack5"),
+      require.resolve("./plugins/splitChunks"),
       require.resolve("./plugins/applyEsbuildInDev"),
     ],
   };
