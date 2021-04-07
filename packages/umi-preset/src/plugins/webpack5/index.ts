@@ -2,14 +2,20 @@ import type { IApi } from "umi";
 
 export default function webpack5(api: IApi) {
   api.chainWebpack((config) => {
-    [
-      config.module.rule("images"),
-      config.module.rule("svg"),
-      config.module.rule("fonts"),
-      config.module.rule("plaintext"),
-    ].forEach((item) => {
-      item.set("type", "javascript/auto");
-    });
+    config.module.rule("images").uses.clear().end().set("type", "asset");
+    config.module.rule("svg").uses.clear().end().set("type", "asset/resource");
+    config.module
+      .rule("fonts")
+      .uses.clear()
+      .end()
+      .set("type", "asset/resource");
+    config.module
+      .rule("plaintext")
+      .uses.clear()
+      .end()
+      .set("type", "asset/source ");
+
+    config.output.set("assetModuleFilename", "static/[name].[hash:8].[ext]");
 
     [
       config.module.rule("js").use("babel-loader"),
