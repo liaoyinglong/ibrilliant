@@ -4,7 +4,7 @@ import { signale } from "@umijs/utils";
 export default function webpack5(api: IApi) {
   api.chainWebpack((config) => {
     //region asset
-    config.output.set("assetModuleFilename", "static/[name].[hash:8].[ext]");
+    config.output.set("assetModuleFilename", "static/[name].[hash:8][ext]");
 
     config.module.rule("images").uses.clear().end().set("type", "asset");
     config.module.rule("svg").uses.clear().end().set("type", "asset/resource");
