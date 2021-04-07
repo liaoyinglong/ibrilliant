@@ -15,7 +15,7 @@ export default function esBuildMinify(api: IApi) {
       .minimizer("esbuild-minify")
       .use(ESBuildMinifyPlugin, [{ target: "es2015" }]);
 
-    signale.note("使用 esBuildMinify 压缩");
+    signale.note("使用 esBuildMinify 压缩 js");
 
     return config;
   });
