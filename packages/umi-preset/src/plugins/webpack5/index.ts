@@ -3,18 +3,12 @@ import type { IApi } from "umi";
 export default function webpack5(api: IApi) {
   api.chainWebpack((config) => {
     [
-      config.module.rule("images").use("url-loader"),
-      config.module.rule("svg").use("file-loader"),
-      config.module.rule("fonts").use("file-loader"),
-      config.module.rule("plaintext").use("raw-loader"),
+      config.module.rule("images"),
+      config.module.rule("svg"),
+      config.module.rule("fonts"),
+      config.module.rule("plaintext"),
     ].forEach((item) => {
-      item.tap((opts = {}) => {
-        opts.type = "javascript/auto";
-        if (opts.fallback?.options) {
-          opts.fallback.options.type = "javascript/auto";
-        }
-        return opts;
-      });
+      item.set("type", "javascript/auto");
     });
 
     [

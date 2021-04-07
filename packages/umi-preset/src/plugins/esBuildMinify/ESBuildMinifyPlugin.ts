@@ -1,10 +1,7 @@
 import type { TransformOptions } from "esbuild";
 import { transform } from "esbuild";
 import webpack from "@umijs/deps/compiled/webpack";
-// webpack 5 exposes the sources property to ensure the right version of webpack-sources is used
-const { RawSource, SourceMapSource } =
-  // @ts-ignore
-  webpack.sources || require("@umijs/deps/compiled/webpack-sources");
+import { RawSource, SourceMapSource } from "webpack-sources";
 
 type Filter = string | RegExp;
 
