@@ -1,4 +1,5 @@
 import type { IApi } from "umi";
+import { signale } from "@umijs/utils";
 
 export default emotion;
 
@@ -26,4 +27,6 @@ function emotion(api: IApi) {
     ]);
     return babelOpts;
   });
+
+  signale.note("配置 emotion ");
 }

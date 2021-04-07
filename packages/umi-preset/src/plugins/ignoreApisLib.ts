@@ -1,4 +1,5 @@
 import type { IApi } from "umi";
+import { signale } from "@umijs/utils";
 
 export default function ignoreApisLib(api: IApi) {
   api.chainWebpack((config) => {
@@ -9,6 +10,8 @@ export default function ignoreApisLib(api: IApi) {
       }
       return false;
     });
+
+    signale.note("忽略 apis/lib");
 
     return config;
   });

@@ -1,7 +1,8 @@
 import { ESBuildMinifyPlugin } from "./ESBuildMinifyPlugin";
 import type { IApi } from "umi";
+import { signale } from "@umijs/utils";
 
-export default function umiEsbuild(api: IApi) {
+export default function esBuildMinify(api: IApi) {
   if (api.env === "development") {
     return;
   }
@@ -13,6 +14,8 @@ export default function umiEsbuild(api: IApi) {
     config.optimization
       .minimizer("esbuild-minify")
       .use(ESBuildMinifyPlugin, [{ target: "es2015" }]);
+
+    signale.note("使用 esBuildMinify 压缩");
 
     return config;
   });

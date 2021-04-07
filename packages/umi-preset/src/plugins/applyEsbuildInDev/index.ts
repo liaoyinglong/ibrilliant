@@ -1,4 +1,5 @@
 import type { IApi } from "umi";
+import { signale } from "@umijs/utils";
 
 export default function applyEsbuildInDev(api: IApi) {
   if (api.env !== "development") {
@@ -20,6 +21,8 @@ export default function applyEsbuildInDev(api: IApi) {
 
       item.loader(require.resolve("./esbuild-loader"));
     });
+
+    signale.note("使用 esbuild-loader 编译");
 
     return config;
   });
