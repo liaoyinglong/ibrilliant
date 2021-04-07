@@ -28,6 +28,12 @@ export default function webpack5(api: IApi) {
         return options;
       });
     });
+    if (api.env !== "development") {
+      config.plugins.delete("optimize-css");
+      config.optimization
+        .minimizer("CssMinimizerPlugin")
+        .use(require.resolve("css-minimizer-webpack-plugin"), []);
+    }
 
     return config;
   });
