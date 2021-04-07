@@ -13,7 +13,8 @@ export default () => {
       require.resolve("./plugins/splitChunks"),
 
       require.resolve("./plugins/applyEsbuildInDev"),
-      require.resolve("./plugins/esBuildMinify"),
+      // 暂时禁用等esbuild稳定后开启
+      // require.resolve("./plugins/esBuildMinify"),
     ],
   };
 };
