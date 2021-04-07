@@ -1,12 +1,18 @@
 import type { NumberInputProps } from "../index";
 import { useNumberInput } from "../index";
-import React, { useState } from "react";
+import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+import React, { useEffect, useState } from "react";
 import { fireEvent, render } from "@testing-library/react";
 
 function renderTestComponent(opt: NumberInputProps) {
+  const setValueRef: MutableRefObject<Dispatch<
+    SetStateAction<string>
+  > | null> = {
+    current: null,
+  };
   const TestComponent = () => {
     const [value, setValue] = useState("");
-
+    setValueRef.current = setValue;
     const { inputComponent, ...otherProps } = useNumberInput({
       ...opt,
       value,
@@ -24,6 +30,7 @@ function renderTestComponent(opt: NumberInputProps) {
   return {
     ...renderRes,
     inputNode: renderRes.container.querySelector("input")!,
+    setValueRef,
   };
 }
 describe("测试数字输入框逻辑", () => {
@@ -61,6 +68,69 @@ describe("测试数字输入框逻辑", () => {
 
     fireEvent.change(inputNode, { target: { value: "1.2" } });
     expect(inputNode.value).toBe("1.0");
+  });
+
+  it("1 位小数，最小变动价位 0.5", () => {
+    const setValueSpy = jest.fn();
+    function InputComponent(props: any) {
+      const { inputComponent, ...otherProps } = useNumberInput(props);
+
+      return React.createElement(inputComponent, {
+        value: otherProps.value,
+        onChange: otherProps.onChange,
+        onBlur: otherProps.onBlur,
+      });
+    }
+
+    const TestComponent = () => {
+      const [value, setValue] = useState("");
+      const [isMarketPrice, setIsMarketPrice] = useState(true);
+      useEffect(() => {
+        if (isMarketPrice) {
+          setValue("");
+        } else {
+          setValue("56683.0");
+        }
+        setValueSpy();
+      }, [isMarketPrice]);
+
+      return (
+        <>
+          <button
+            onClick={() => {
+              setIsMarketPrice(!isMarketPrice);
+            }}
+          >
+            toggle price type
+          </button>
+          <InputComponent
+            isMarketPrice={isMarketPrice}
+            decimalScale={1}
+            step={0.5}
+            value={value}
+            onChange={setValue}
+          ></InputComponent>
+        </>
+      );
+    };
+    const renderRes = render(<TestComponent></TestComponent>);
+    const inputNode = renderRes.container.querySelector("input")!;
+    const btnNode = renderRes.container.querySelector("button")!;
+
+    expect(inputNode.value).toBe("");
+    expect(setValueSpy).toBeCalledTimes(1);
+
+    fireEvent.click(btnNode);
+    expect(inputNode.value).toBe("56683.0");
+    expect(setValueSpy).toBeCalledTimes(2);
+
+    fireEvent.click(btnNode);
+    expect(inputNode.value).toBe("");
+    expect(setValueSpy).toBeCalledTimes(3);
+
+    fireEvent.click(btnNode);
+    expect(inputNode.value).toBe("56683.0");
+    expect(setValueSpy).toBeCalledTimes(4);
   });
 
   it("2 位小数，最后一位输入不足step需要补零", () => {
