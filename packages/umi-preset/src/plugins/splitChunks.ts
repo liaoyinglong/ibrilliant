@@ -1,4 +1,5 @@
 import { IApi } from "umi";
+import { signale } from "@umijs/utils";
 
 export default function splitChunks(api: IApi) {
   // @ts-ignore
@@ -9,7 +10,7 @@ export default function splitChunks(api: IApi) {
       .filter((item) => item.canBeInitial() || item.isOnlyInitial())
       .map((item) => item.name || item.id);
 
-    console.log("[modifyHTMLChunks]: 入口 chunks", res);
+    signale.note(" 入口 chunks", res);
 
     return res;
   });
