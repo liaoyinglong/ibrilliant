@@ -49,6 +49,15 @@ export default function webpack5(api: IApi) {
         return options;
       });
     });
+
+    // 使用最新的 copy-webpack-plugin
+    // TODO: 等umi更新后可以移除
+    if (config.plugins.has("copy")) {
+      config
+        .plugin("copy")
+        .set("plugin", require.resolve("copy-webpack-plugin"));
+    }
+
     if (api.env !== "development") {
       config.plugins.delete("optimize-css");
       config.optimization
