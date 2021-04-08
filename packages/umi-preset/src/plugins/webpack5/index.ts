@@ -53,7 +53,15 @@ export default function webpack5(api: IApi) {
       config.plugins.delete("optimize-css");
       config.optimization
         .minimizer("CssMinimizerPlugin")
-        .use(require.resolve("css-minimizer-webpack-plugin"), []);
+        .use(require.resolve("css-minimizer-webpack-plugin"), [
+          {
+            exclude: [
+              /charting_library\/bundles\//,
+              /charting_library\/charting_library\//,
+              /NIM_Web_Chatroom_v.+/,
+            ],
+          },
+        ]);
       signale.note("使用 CssMinimizerPlugin 压缩 css");
     }
 

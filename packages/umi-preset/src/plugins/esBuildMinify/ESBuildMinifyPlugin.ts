@@ -2,6 +2,7 @@ import type { TransformOptions } from "esbuild";
 import { transform } from "esbuild";
 import webpack from "@umijs/deps/compiled/webpack";
 import { RawSource, SourceMapSource } from "webpack-sources";
+import { signale } from "@umijs/utils";
 
 type Filter = string | RegExp;
 
@@ -185,6 +186,7 @@ export class ESBuildMinifyPlugin {
 
     if (transforms.length > 0) {
       await Promise.all(transforms);
+      signale.note(`使用 esBuildMinify 压缩了 ${transforms.length}个文件`);
     }
   }
 }
