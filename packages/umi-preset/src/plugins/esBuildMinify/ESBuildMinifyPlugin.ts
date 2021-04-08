@@ -2,8 +2,6 @@ import type { TransformOptions } from "esbuild";
 import { transform } from "esbuild";
 import webpack from "@umijs/deps/compiled/webpack";
 import { RawSource, SourceMapSource } from "webpack-sources";
-import * as fs from "fs";
-import path from "path";
 
 type Filter = string | RegExp;
 
@@ -190,15 +188,17 @@ export class ESBuildMinifyPlugin {
     }
   }
 }
-
-// function debug(beforeCode: string, afterCode: string) {
+// let i = 0;
+// const fs = require("fs");
+// const path = require("path");
+// function debug(beforeCode, afterCode) {
 //   if (
 //     beforeCode.includes("fnValues") &&
 //     beforeCode.includes("fnStyle") &&
 //     beforeCode.includes("onProcessStyle")
 //   ) {
-//     fs.writeFileSync(path.join(__dirname, "beforeCode.js"), beforeCode);
-//     fs.writeFileSync(path.join(__dirname, "afterCode.js"), afterCode);
+//     fs.writeFileSync(path.join(__dirname, `beforeCode.${i++}.js`), beforeCode);
+//     fs.writeFileSync(path.join(__dirname, `afterCode${i++}.js`), afterCode);
 //     console.log(`写入文件 beforeCode.js afterCode.js`);
 //   }
 // }

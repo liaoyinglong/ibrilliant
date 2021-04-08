@@ -13,9 +13,9 @@ export default () => {
       require.resolve("./plugins/splitChunks"),
 
       require.resolve("./plugins/applyEsbuildInDev"),
-      // 暂时禁用等esbuild稳定后开启
-      // https://github.com/evanw/esbuild/issues/1121
-      // require.resolve("./plugins/esBuildMinify"),
+
+      // FIXED: https://github.com/evanw/esbuild/issues/1121
+      require.resolve("./plugins/esBuildMinify"),
     ],
   };
 };
