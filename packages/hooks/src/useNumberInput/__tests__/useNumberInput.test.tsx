@@ -181,10 +181,10 @@ describe("测试数字输入框逻辑", () => {
 
   it("不传step应该根据decimalScale生成", () => {
     const { inputNode } = renderTestComponent({
-      decimalScale: 2,
+      decimalScale: 5,
     });
-    fireEvent.change(inputNode, { target: { value: "0.92222" } });
-    expect(inputNode.value).toBe("0.92");
+    fireEvent.change(inputNode, { target: { value: "0.123456" } });
+    expect(inputNode.value).toBe("0.12345");
   });
 
   it("直接输入小数点应该补零到最前面", () => {

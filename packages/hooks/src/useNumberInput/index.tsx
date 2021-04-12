@@ -52,7 +52,7 @@ export function useNumberInput(props: NumberInputProps) {
 
   const forceUpdate = useUpdate();
   const normalizedStep = useMemo(() => {
-    if (Number.isNaN(step!)) {
+    if (Number.isNaN(+step!)) {
       if (decimalScale) {
         // 小数 位数 为 0 个
         if (decimalScale === 0) {
