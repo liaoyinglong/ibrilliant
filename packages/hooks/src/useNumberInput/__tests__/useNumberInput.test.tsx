@@ -187,6 +187,15 @@ describe("测试数字输入框逻辑", () => {
     expect(inputNode.value).toBe("0.92");
   });
 
+  it("直接输入小数点应该补零到最前面", () => {
+    const { inputNode } = renderTestComponent({
+      decimalScale: 2,
+      step: 0.05,
+    });
+    fireEvent.change(inputNode, { target: { value: "." } });
+    expect(inputNode.value).toBe("0.");
+  });
+
   it("onBlur的时候应该修正最小变动价位", () => {
     const { inputNode } = renderTestComponent({
       decimalScale: 0,

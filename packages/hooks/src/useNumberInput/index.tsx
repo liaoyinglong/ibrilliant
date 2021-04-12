@@ -72,6 +72,9 @@ export function useNumberInput(props: NumberInputProps) {
 
   const normalizNextValue = useCallback(
     (nextValue: string) => {
+      if (nextValue === ".") {
+        return "0.";
+      }
       if ((allowNegative && nextValue === "-") || nextValue === "") {
         return nextValue;
       }
