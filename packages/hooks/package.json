@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@ibrilliant/utils": "^1.0.37",
-    "use-constant": "^1.1.0"
+    "use-constant": "^1.1.0",
+    "react-number-format": "4.4.4"
   }
 }
