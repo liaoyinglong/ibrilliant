@@ -27,6 +27,10 @@ export function createSliceStateHook<
   return res;
 }
 
+/**
+ * @param slice
+ * @param [keys] {string[]} 不传keys默认拿全部key的，传了只拿指定key
+ */
 export function useSliceState<
   T extends Slice,
   State extends ReturnType<T["reducer"]>
