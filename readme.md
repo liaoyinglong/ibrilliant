@@ -2,10 +2,16 @@
 
 git 地址 http://192.168.70.56:8088/hopex/ibrilliant
 
+### install
+
 ```bash
+# dependencies
 yarn add @ibrilliant/hooks @ibrilliant/observable @ibrilliant/utils
-yarn add -D @ibrilliant/locale-cli @ibrilliant/sw2rx
+# devDependencies
+yarn add -D @ibrilliant/locale-cli @ibrilliant/sw2rx @ibrilliant/umi-preset
 ```
+
+## packages 简介
 
 | packages               | 简介                           | 文档                                      |
 | ---------------------- | ------------------------------ | ----------------------------------------- |
