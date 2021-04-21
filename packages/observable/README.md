@@ -8,8 +8,6 @@ $ yarn add @ibrilliant/observable
 
 ## 简介
 
-| hooks                        | 简介                   |
-| ---------------------------- | ---------------------- |
-| [createNotify][createnotify] | 对`provider`进行的包装 |
-
-[createNotify]:[File://./src/creator/createNotify/readme.md]
+| hooks                                                | 简介                                           |
+| ---------------------------------------------------- | ---------------------------------------------- |
+| [createNotify](./src/creator/createNotify/readme.md) | 统一管理的发布订阅，通过 rxjs 赋予更强大的能力 |
