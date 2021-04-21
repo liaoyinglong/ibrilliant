@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 import { filter, map, startWith, switchMap } from "rxjs/operators";
-import { intervalOnDocumentShow } from "./intervalOnDocumentShow";
+import { intervalOnDocumentShow } from "../intervalOnDocumentShow";
 
 const sub = new Subject<{ type: string; payload: any }>();
 

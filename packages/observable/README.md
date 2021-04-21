@@ -1,11 +1,15 @@
-# `hooks`
+# @ibrilliant/observable
 
-> TODO: description
+## install
 
-## Usage
-
+```bash
+$ yarn add @ibrilliant/observable
 ```
-const hooks = require('hooks');
 
-// TODO: DEMONSTRATE API
-```
+## 简介
+
+| hooks                        | 简介                   |
+| ---------------------------- | ---------------------- |
+| [createNotify][createnotify] | 对`provider`进行的包装 |
+
+[createNotify]:[File://./src/creator/createNotify/readme.md]
