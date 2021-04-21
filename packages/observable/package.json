@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "scripts": {
+    "prebuild": "shx rm -rf ./{esm,dist,next,*.tsbuildinfo}",
     "build": "tsc -b ./tsconfig.json",
     "start": "tsc -b ./tsconfig.json -w"
   },
