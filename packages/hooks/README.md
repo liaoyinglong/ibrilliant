@@ -21,6 +21,7 @@ $ yarn add @ibrilliant/hooks
 | [useActionPending](./src/useActionPending/readme.md)                              | 管理`loading`，避免出现较短时间的闪烁      |
 | [useConstant](./src/useConstant/readme.md)                                        | reexport from [use-constant][use-constant] |
 | [useLocationQuery](./src/useLocationQuery/readme.md)                              | parse `location.search`                    |
+| [useNumberInput](./src/useNumberInput/readme.md)                                  | 数字输入框处理逻辑                         |
 
 ### reference
 
