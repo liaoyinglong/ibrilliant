@@ -1,5 +1,5 @@
 import { timer } from "rxjs";
-import { subscribeWhenDocumentShow } from "./subscribeWhenDocumentShow";
+import { subscribeWhenDocumentShow } from "../subscribeWhenDocumentShow";
 
 /**
  * @param pollingInterval 轮询间隔
