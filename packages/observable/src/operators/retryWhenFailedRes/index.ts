@@ -1,6 +1,6 @@
 import { Observable, timer } from "rxjs";
 import { map, mergeMap, retryWhen } from "rxjs/operators";
-import { BaseRes } from "../shared/types";
+import { BaseRes } from "../../shared/types";
 
 class ShouldRetryError extends Error {}
 
