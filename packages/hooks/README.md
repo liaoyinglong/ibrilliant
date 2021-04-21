@@ -22,6 +22,7 @@ $ yarn add @ibrilliant/hooks
 | [useConstant](./src/useConstant/readme.md)                                        | reexport from [use-constant][use-constant] |
 | [useLocationQuery](./src/useLocationQuery/readme.md)                              | parse `location.search`                    |
 | [useNumberInput](./src/useNumberInput/readme.md)                                  | 数字输入框处理逻辑                         |
+| [useSelectorWithIsEqual](./src/useSelectorWithIsEqual/readme.md)                  | 增强`useSelector`                          |
 
 ### reference
 
