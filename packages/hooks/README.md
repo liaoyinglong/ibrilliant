@@ -24,6 +24,4 @@ $ yarn add @ibrilliant/hooks
 | [useNumberInput](./src/useNumberInput/readme.md)                                  | 数字输入框处理逻辑                         |
 | [useSelectorWithIsEqual](./src/useSelectorWithIsEqual/readme.md)                  | 增强`useSelector`                          |
 
-### reference
-
 [use-constant]:[https://github.com/andarist/use-constant]
