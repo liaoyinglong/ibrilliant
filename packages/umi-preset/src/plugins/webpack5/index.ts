@@ -38,24 +38,19 @@ export default function webpack5(api: IApi) {
       item.set("type", "javascript/auto");
     });
 
-    [
-      config.module.rule("js").use("babel-loader"),
-      config.module.rule("js-for-umi-dist").use("babel-loader"),
-      config.module.rule("ts-in-node_modules").use("babel-loader"),
-      config.module.rule("js-in-node_modules").use("babel-loader"),
-    ].forEach((item) => {
-      item.tap((options = {}) => {
-        options.cacheDirectory = false;
-        return options;
+    // TODO: 3.4.9以上版本已经修复了这个问题，后续全部升级完成可以删除
+    if (api.utils.semver.lt(process.env.UMI_VERSION, "3.4.9")) {
+      [
+        config.module.rule("js").use("babel-loader"),
+        config.module.rule("js-for-umi-dist").use("babel-loader"),
+        config.module.rule("ts-in-node_modules").use("babel-loader"),
+        config.module.rule("js-in-node_modules").use("babel-loader"),
+      ].forEach((item) => {
+        item.tap((options = {}) => {
+          options.cacheDirectory = false;
+          return options;
+        });
       });
-    });
-
-    // 使用最新的 copy-webpack-plugin
-    // TODO: 等umi更新后可以移除
-    if (config.plugins.has("copy")) {
-      config
-        .plugin("copy")
-        .set("plugin", require.resolve("copy-webpack-plugin"));
     }
 
     if (api.env !== "development") {
