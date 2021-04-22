@@ -31,8 +31,6 @@ export default defineConfig({
 | ------------------------------------------------------------------- | ----------------------------------------------- |
 | [applyEsbuildInDev](./src/plugins/applyEsbuildInDev/index.ts)       | 开发环境使用`esbuild-loader`编译                |
 | [esbuild-loader](./src/plugins/applyEsbuildInDev/esbuild-loader.ts) | 对`esbuild`进行封装的`loader`                   |
-| [esBuildMinify](./src/plugins/esBuildMinify/index.ts)               | 使用`esbuild`来压缩打包代码                     |
-| [esBuildMinify](./src/plugins/esBuildMinify/ESBuildMinifyPlugin.ts) | 对`esbuild`进行封装的`webpack` `plugins`        |
 | [webpack5](./src/plugins/webpack5/index.ts)                         | 兼容一些`webpack5`的配置，等`umi`完全适配可移除 |
 | [css](./src/plugins/css.ts)                                         | 对`umi` `css`配置的一些修改                     |
 | [emotion](./src/plugins/emotion.ts)                                 | 配置`emotion`                                   |
@@ -40,3 +38,4 @@ export default defineConfig({
 | [rewriteFastRefresh](./src/plugins/rewriteFastRefresh.ts)           | 让`fastRefresh`只支持`/\.([jt]sx)$/i`文件       |
 | [sass](./src/plugins/sass.ts)                                       | 开启`sass`支持                                  |
 | [splitChunks](./src/plugins/splitChunks.ts)                         | 开启`splitChunks`分包策略                       |
+| [terser](./src/plugins/terser.ts)                                   | 对`terser`的调整，忽略`tradingview`文件的压缩   |

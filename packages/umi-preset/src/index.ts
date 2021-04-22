@@ -14,8 +14,7 @@ export default () => {
 
       require.resolve("./plugins/applyEsbuildInDev"),
 
-      // FIXED: https://github.com/evanw/esbuild/issues/1121
-      require.resolve("./plugins/esBuildMinify"),
+      require.resolve("./plugins/terser"),
     ],
   };
 };
