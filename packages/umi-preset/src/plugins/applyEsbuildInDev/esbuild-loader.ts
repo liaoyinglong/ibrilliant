@@ -1,9 +1,10 @@
-import { webpack } from "umi";
 import * as babel from "@babel/core";
 import { ParserOptions, TransformOptions } from "@babel/core";
 import * as esbuild from "esbuild";
 import * as os from "os";
 import { Loader } from "esbuild";
+import { getOptions } from "loader-utils";
+import webpack from "webpack";
 
 export default async function ESBuildLoader(
   this: webpack.loader.LoaderContext,
@@ -11,8 +12,11 @@ export default async function ESBuildLoader(
 ): Promise<void> {
   const done = this.async()!;
 
+  const options = getOptions(this);
+  const extraBabelPlugins = (options.extraBabelPlugins ?? []) as any[];
+
   try {
-    const res = await transform(source, this.resourcePath);
+    const res = await transform(source, this.resourcePath, extraBabelPlugins);
     if (typeof res === "string") {
       done(null, res);
       return;
@@ -33,13 +37,14 @@ interface FileTypes {
 function transformByBabel(
   code: string,
   resourcePath: string,
-  fileTypes: FileTypes
+  fileTypes: FileTypes,
+  extraBabelPlugins: any[]
 ) {
   const parserPlugins: ParserOptions["plugins"] = [
     "classProperties",
     "decorators-legacy",
   ];
-  const babelPlugins: TransformOptions["plugins"] = [];
+  const babelPlugins: TransformOptions["plugins"] = [...extraBabelPlugins];
 
   const babelPresets: TransformOptions["presets"] = [];
   // if (fileTypes.isJs || fileTypes.isJsx) {
@@ -138,7 +143,11 @@ const options = {
   enableReactRefrsh: /(components|HComponents|routes|pages)/,
 };
 
-export async function transform(code: string, resourcePath: string) {
+async function transform(
+  code: string,
+  resourcePath: string,
+  extraBabelPlugins: any[]
+) {
   const fileTypes = {
     isJs: resourcePath.endsWith(".js"),
     isJsx: resourcePath.endsWith(".jsx"),
@@ -148,7 +157,12 @@ export async function transform(code: string, resourcePath: string) {
   let needEsbuildTransformCode = code;
 
   if (options.enableReactRefrsh.test(resourcePath)) {
-    let babelRes = await transformByBabel(code, resourcePath, fileTypes);
+    let babelRes = await transformByBabel(
+      code,
+      resourcePath,
+      fileTypes,
+      extraBabelPlugins
+    );
     if (!babelRes?.code) {
       return code;
     }

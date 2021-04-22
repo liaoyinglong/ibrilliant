@@ -19,7 +19,9 @@ export default function applyEsbuildInDev(api: IApi) {
         return {};
       });
 
-      item.loader(require.resolve("./esbuild-loader"));
+      item.loader(require.resolve("./esbuild-loader")).options({
+        extraBabelPlugins: api.config.extraBabelPlugins,
+      });
     });
 
     signale.note("使用 esbuild-loader 编译");
