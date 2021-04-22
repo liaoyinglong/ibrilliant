@@ -2,6 +2,16 @@ import type { IApi } from "umi";
 import { signale } from "@umijs/utils";
 
 export default function applyEsbuildInDev(api: IApi) {
+  api.describe({
+    key: "applyEsbuildInDev",
+    config: {
+      schema(joi) {
+        return joi.object();
+      },
+    },
+    enableBy: api.EnableBy.config,
+  });
+
   if (api.env !== "development") {
     return;
   }
