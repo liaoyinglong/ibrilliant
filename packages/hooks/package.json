@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/hooks",
-  "version": "1.0.67",
+  "version": "2.0.0",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -26,20 +26,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.67",
-    "@ibrilliant/locale-cli": "^1.0.67",
-    "@ibrilliant/observable": "^1.0.67",
-    "@ibrilliant/sw2rx": "^1.0.67",
-    "@ibrilliant/umi-preset": "^1.0.67",
-    "@dune2/cli":"^0.4.10",
-    "@dune2/next-plugin":"^0.4.10",
-    "@dune2/swc-plugin":"^0.4.10",
-    "@dune2/wasm":"^0.4.10",
-    "@dune2/tools":"^0.4.10",
-    "@dune2/unplugin":"^0.4.10",
-    "ssr-optimize":"^0.0.5",
-    "webpack-plugin-deps-analyzer":"^0.0.7",    
+    "@dune2/cli": "^0.4.10",
+    "@dune2/next-plugin": "^0.4.10",
+    "@dune2/swc-plugin": "^0.4.10",
+    "@dune2/tools": "^0.4.10",
+    "@dune2/unplugin": "^0.4.10",
+    "@dune2/wasm": "^0.4.10",
+    "@ibrilliant/locale-cli": "^2.0.0",
+    "@ibrilliant/observable": "^2.0.0",
+    "@ibrilliant/sw2rx": "^2.0.0",
+    "@ibrilliant/umi-preset": "^2.0.0",
+    "@ibrilliant/utils": "^2.0.0",
     "react-number-format": "4.4.4",
-    "use-constant": "^1.1.0"
+    "ssr-optimize": "^0.0.5",
+    "use-constant": "^1.1.0",
+    "webpack-plugin-deps-analyzer": "^0.0.7"
   }
 }

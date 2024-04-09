@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/sw2rx",
-  "version": "1.0.67",
+  "version": "2.0.0",
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
@@ -28,25 +28,25 @@
     "directory": "packages/sw2rx"
   },
   "dependencies": {
-    "@ibrilliant/hooks": "^1.0.67",
-    "@ibrilliant/utils": "^1.0.67",
-    "@ibrilliant/locale-cli": "^1.0.67",
-    "@ibrilliant/observable": "^1.0.67",
-    "@ibrilliant/umi-preset": "^1.0.67",
-    "@dune2/cli":"^0.4.10",
-    "@dune2/next-plugin":"^0.4.10",
-    "@dune2/swc-plugin":"^0.4.10",
-    "@dune2/wasm":"^0.4.10",
-    "@dune2/tools":"^0.4.10",
-    "@dune2/unplugin":"^0.4.10",
-    "ssr-optimize":"^0.0.5",
-    "webpack-plugin-deps-analyzer":"^0.0.7",    
+    "@dune2/cli": "^0.4.10",
+    "@dune2/next-plugin": "^0.4.10",
+    "@dune2/swc-plugin": "^0.4.10",
+    "@dune2/tools": "^0.4.10",
+    "@dune2/unplugin": "^0.4.10",
+    "@dune2/wasm": "^0.4.10",
+    "@ibrilliant/hooks": "^2.0.0",
+    "@ibrilliant/locale-cli": "^2.0.0",
+    "@ibrilliant/observable": "^2.0.0",
+    "@ibrilliant/umi-preset": "^2.0.0",
+    "@ibrilliant/utils": "^2.0.0",
     "@openapitools/openapi-generator-cli": "2.1.16",
     "axios": "^0.21.1",
     "commander": "^6.2.1",
     "cosmiconfig": "^7.0.0",
     "fast-glob": "^3",
-    "find-cache-dir": "^3"
+    "find-cache-dir": "^3",
+    "ssr-optimize": "^0.0.5",
+    "webpack-plugin-deps-analyzer": "^0.0.7"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/utils",
-  "version": "1.0.67",
+  "version": "2.0.0",
   "description": "",
   "keywords": [],
   "scripts": {
@@ -29,24 +29,24 @@
     "directory": "packages/utils"
   },
   "dependencies": {
-    "@ibrilliant/hooks": "^1.0.67",
-    "@ibrilliant/locale-cli": "^1.0.67",
-    "@ibrilliant/observable": "^1.0.67",
-    "@ibrilliant/sw2rx": "^1.0.67",
-    "@ibrilliant/umi-preset": "^1.0.67",
-    "@dune2/cli":"^0.4.10",
-    "@dune2/next-plugin":"^0.4.10",
-    "@dune2/swc-plugin":"^0.4.10",
-    "@dune2/wasm":"^0.4.10",
-    "@dune2/tools":"^0.4.10",
-    "@dune2/unplugin":"^0.4.10",
-    "ssr-optimize":"^0.0.5",
-    "webpack-plugin-deps-analyzer":"^0.0.7",    
+    "@dune2/cli": "^0.4.10",
+    "@dune2/next-plugin": "^0.4.10",
+    "@dune2/swc-plugin": "^0.4.10",
+    "@dune2/tools": "^0.4.10",
+    "@dune2/unplugin": "^0.4.10",
+    "@dune2/wasm": "^0.4.10",
     "@fingerprintjs/fingerprintjs": "^3.0.6",
+    "@ibrilliant/hooks": "^2.0.0",
+    "@ibrilliant/locale-cli": "^2.0.0",
+    "@ibrilliant/observable": "^2.0.0",
+    "@ibrilliant/sw2rx": "^2.0.0",
+    "@ibrilliant/umi-preset": "^2.0.0",
     "debug": "^4.3.1",
     "fast-deep-equal": "^3.1.3",
     "js-cookie": "^2.2.1",
     "pako": "^2.0.2",
-    "qs": "^6.9.6"
+    "qs": "^6.9.6",
+    "ssr-optimize": "^0.0.5",
+    "webpack-plugin-deps-analyzer": "^0.0.7"
   }
 }
