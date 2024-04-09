@@ -22,6 +22,11 @@
     "try-test": "yarn build && cd ./example && yarn sw",
     "l": "yarn link"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liaoyinglong/ibrilliant.git",
+    "directory": "packages/sw2rx"
+  },
   "dependencies": {
     "@ibrilliant/utils": "^1.0.63",
     "@openapitools/openapi-generator-cli": "2.1.16",

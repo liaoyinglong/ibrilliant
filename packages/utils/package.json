@@ -23,6 +23,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liaoyinglong/ibrilliant.git",
+    "directory": "packages/utils"
+  },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.0.6",
     "debug": "^4.3.1",

@@ -17,6 +17,11 @@
     "operators.js",
     "operators.d.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liaoyinglong/ibrilliant.git",
+    "directory": "packages/observable"
+  },
   "sideEffects": false,
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
