@@ -1,6 +1,6 @@
 {
   "name": "@ibrilliant/sw2rx",
-  "version": "1.0.63",
+  "version": "1.0.67",
   "bin": {
     "sw2rx": "./bin/sw2rx"
   },
@@ -28,7 +28,7 @@
     "directory": "packages/sw2rx"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.63",
+    "@ibrilliant/utils": "^1.0.67",
     "@openapitools/openapi-generator-cli": "2.1.16",
     "axios": "^0.21.1",
     "commander": "^6.2.1",
