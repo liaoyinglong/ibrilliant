@@ -30,11 +30,23 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@ibrilliant/utils": "^1.0.67",
     "commander": "^6.2.1",
     "inquirer": "^7.3.3",
     "node-xlsx": "^0.15.0",
-    "opencc": "^1.1.1"
+    "opencc": "^1.1.1",
+    "@ibrilliant/hooks": "^1.0.67",
+    "@ibrilliant/utils": "^1.0.67",
+    "@ibrilliant/observable": "^1.0.67",
+    "@ibrilliant/sw2rx": "^1.0.67",
+    "@ibrilliant/umi-preset": "^1.0.67",
+    "@dune2/cli": "^0.4.10",
+    "@dune2/next-plugin": "^0.4.10",
+    "@dune2/swc-plugin": "^0.4.10",
+    "@dune2/wasm": "^0.4.10",
+    "@dune2/tools": "^0.4.10",
+    "@dune2/unplugin": "^0.4.10",
+    "ssr-optimize": "^0.0.5",
+    "webpack-plugin-deps-analyzer": "^0.0.7"
   },
   "publishConfig": {
     "access": "public"

@@ -27,6 +27,18 @@
   },
   "dependencies": {
     "@ibrilliant/utils": "^1.0.67",
+    "@ibrilliant/locale-cli": "^1.0.67",
+    "@ibrilliant/observable": "^1.0.67",
+    "@ibrilliant/sw2rx": "^1.0.67",
+    "@ibrilliant/umi-preset": "^1.0.67",
+    "@dune2/cli":"^0.4.10",
+    "@dune2/next-plugin":"^0.4.10",
+    "@dune2/swc-plugin":"^0.4.10",
+    "@dune2/wasm":"^0.4.10",
+    "@dune2/tools":"^0.4.10",
+    "@dune2/unplugin":"^0.4.10",
+    "ssr-optimize":"^0.0.5",
+    "webpack-plugin-deps-analyzer":"^0.0.7",    
     "react-number-format": "4.4.4",
     "use-constant": "^1.1.0"
   }
