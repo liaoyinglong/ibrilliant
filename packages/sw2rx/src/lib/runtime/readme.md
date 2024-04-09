@@ -1,4 +1,4 @@
-##@hopex-api/runtime
+## @ibrilliant/sw2rx/runtime
 
 ### 请求的底层依赖
 

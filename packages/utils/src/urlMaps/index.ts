@@ -11,11 +11,11 @@ interface CreateUrlHelpersParams {
 
 export function createUrl(params: CreateUrlHelpersParams) {
   const { ApiEnv, domainNameSubject } = params;
-  // 生成接口请求的url前缀
+  // 生成接口请求的 url 前缀
   function getServiceUrl(projectName: string, urlPrefix = ApiEnv.urlEnvPrefix) {
     return `https://${urlPrefix}${projectName}.${domainNameSubject.getValue()}`;
   }
-  // 获取活动页h5的链接
+  // 获取活动页 h5 的链接
   function getH5UrlCreator<Q extends Record<string, any>>(p: string) {
     return (query: Q) => {
       if (!_.startsWith(p, "/")) {
@@ -30,7 +30,7 @@ export function createUrl(params: CreateUrlHelpersParams) {
   }
 
   /**
-   * 生成pc 站点的链接
+   * 生成 pc 站点的链接
    */
   function getMainDomainUrlCreator<Q extends Record<string, any>>(p: string) {
     return (query: Q) => {
@@ -53,7 +53,7 @@ export function createUrl(params: CreateUrlHelpersParams) {
       return getServiceUrl("api");
     },
     get news() {
-      // testnet 没有 快讯api  使用 正式环境的
+      // testnet 没有 快讯 api  使用 正式环境的
       return getServiceUrl(
         "news",
         ApiEnv.isTestNet ? ApiEnv.urlEnvPrefixMap.pro : ApiEnv.urlEnvPrefix
@@ -73,7 +73,7 @@ export function createUrl(params: CreateUrlHelpersParams) {
     },
 
     /**
-     * 生成 h5.hopex.com 相关链接方法的creator
+     * 生成 h5 相关链接方法的 creator
      */
     getH5UrlCreator,
     getMainDomainUrlCreator,

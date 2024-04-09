@@ -1,6 +1,6 @@
 ## ibrilliant 公共库
 
-git 地址 http://192.168.70.56:8088/hopex/ibrilliant
+
 
 ### install
 
